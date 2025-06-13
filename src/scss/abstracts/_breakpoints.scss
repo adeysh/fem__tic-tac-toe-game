@@ -1,0 +1,57 @@
+@use "sass:map";
+@use "./functions" as *;
+
+// Define breakpoints
+$breakpoints: (
+    "tablet": em(720),
+    "desktop": em(1200),
+    "desktop-large": em(1920),
+    "desktop-xlarge": em(2560),
+);
+
+@mixin bp($from: false, $to: false, $extra: ()) {
+    $conditions: "screen";
+
+    @if $from {
+        @if map.has-key($breakpoints, $from) {
+            $conditions: "#{$conditions} and (width >= #{map.get($breakpoints, $from)})";
+        }
+
+        @else {
+            @error "Invalid 'from' breakpoint: #{$from}";
+        }
+    }
+
+    @if $to {
+        @if map.has-key($breakpoints, $to) {
+            $conditions: "#{$conditions} and (width <= #{map.get($breakpoints, $to)})";
+        }
+
+        @else {
+            @error "Invalid 'to' breakpoint: #{$to}";
+        }
+    }
+
+    @each $key, $value in $extra {
+        $conditions: "#{$conditions} and (#{$key}: #{$value})";
+    }
+
+    @media #{$conditions} {
+        @content;
+    }
+}
+
+// Usage examples
+// .element {
+//     @include bp($from: "mobile", $to: "desktop") {
+//         background: red;
+//     }
+
+//     @include bp($to: "desktop") {
+//         color: blue;
+//     }
+
+//     @include bp($from: "tablet", $extra: (orientation: landscape)) {
+//         font-size: 20px;
+//     }
+// }
