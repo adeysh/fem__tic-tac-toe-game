@@ -1,0 +1,31 @@
+@use './functions' as *;
+
+:root {
+    /* Colors */
+
+    --skyblue-1000: hsl(178, 60%, 48%);
+    --skyblue-500: hsl(178, 75%, 65%);
+    --yellow-1000: hsl(39, 87%, 54%);
+    --yellow-500: hsl(39, 100%, 69%);
+    --darkgreen-1000: hsl(202, 32%, 15%);
+    --darkgreen-500: hsl(199, 35%, 19%);
+    --grey-1000: hsl(198, 23%, 72%);
+    --grey-500: hsl(197, 33%, 89%);
+
+    // semantics
+    --bg-body: var(--darkgreen-500);
+
+    /* font */
+
+    // font-family
+    --ff-primary: "Outfit", sans-serif;
+
+    // font-size
+    --fs-body: #{rem(16)};
+    --fs-medium: #{rem(24)};
+
+    // font-weight
+    --fw-regular: 400;
+    --fw-semi-bold: 500;
+    --fw-bold: 700;
+}
