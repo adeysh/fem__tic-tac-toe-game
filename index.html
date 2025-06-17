@@ -28,10 +28,10 @@
     </style>
 </head>
 
-<body>
-    <main class="main wrapper">
-        <!-- header logo -->
-        <svg width="72" height="32" xmlns="http://www.w3.org/2000/svg">
+<body class="game-active">
+    <!-- header logo -->
+    <header class="header wrapper header--game-active">
+        <svg width="72" height="32" viewBox="0 0 72 32" xmlns="http://www.w3.org/2000/svg">
             <g fill="none" fill-rule="evenodd">
                 <path
                     d="M8.562 1.634 16 9.073l7.438-7.439a3 3 0 0 1 4.243 0l2.685 2.685a3 3 0 0 1 0 4.243L22.927 16l7.439 7.438a3 3 0 0 1 0 4.243l-2.685 2.685a3 3 0 0 1-4.243 0L16 22.927l-7.438 7.439a3 3 0 0 1-4.243 0L1.634 27.68a3 3 0 0 1 0-4.243L9.073 16 1.634 8.562a3 3 0 0 1 0-4.243L4.32 1.634a3 3 0 0 1 4.243 0Z"
@@ -42,28 +42,59 @@
             </g>
         </svg>
 
+        <!-- player turn indicator -->
+        <div class="turn">
+            <span class="turn__icon">
+                <svg id="icon-x-default" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+                    <path fill="currentColor"
+                        d="M15.002 1.147 32 18.145 48.998 1.147a3 3 0 0 1 4.243 0l9.612 9.612a3 3 0 0 1 0 4.243L45.855 32l16.998 16.998a3 3 0 0 1 0 4.243l-9.612 9.612a3 3 0 0 1-4.243 0L32 45.855 15.002 62.853a3 3 0 0 1-4.243 0L1.147 53.24a3 3 0 0 1 0-4.243L18.145 32 1.147 15.002a3 3 0 0 1 0-4.243l9.612-9.612a3 3 0 0 1 4.243 0Z"
+                        fill-rule="evenodd" />
+                </svg>
+            </span>
+            <p>Turn</p>
+        </div>
+
+        <!-- restart button -->
+        <button type="button" class="restart-btn">
+            <svg width="20" height="20" xmlns="http://www.w3.org/2000/svg">
+                <path
+                    d="M19.524 0h-1.88a.476.476 0 0 0-.476.499l.159 3.284A9.81 9.81 0 0 0 9.835.317C4.415.317-.004 4.743 0 10.167.004 15.597 4.406 20 9.835 20a9.796 9.796 0 0 0 6.59-2.536.476.476 0 0 0 .019-.692l-1.348-1.349a.476.476 0 0 0-.65-.022 6.976 6.976 0 0 1-9.85-.63 6.987 6.987 0 0 1 .63-9.857 6.976 6.976 0 0 1 10.403 1.348l-4.027-.193a.476.476 0 0 0-.498.476v1.881c0 .263.213.476.476.476h7.944A.476.476 0 0 0 20 8.426V.476A.476.476 0 0 0 19.524 0Z"
+                    fill="#1F3641" />
+            </svg>
+        </button>
+    </header>
+    <main class="main wrapper main--game-active">
+
+
+
         <!-- game menu -->
         <!-- <template id="menu-screen"> -->
         <div class="menu">
-            <div class="menu-main">
+            <div class="menu__main">
                 <h1 class="menu__title">
                     Pick Player 1's Mark
                 </h1>
 
                 <div class="menu__mark-options">
-                    <div class="menu__mark-option">
+                    <input class="menu__mark-option-radio" id="visa" type="radio" name="credit-card" value="visa" />
+
+                    <label class="menu__mark-option menu__mark-option--X" for="visa">
                         <svg id="icon-x-default" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
-                            <path
+                            <path fill="currentColor"
                                 d="M15.002 1.147 32 18.145 48.998 1.147a3 3 0 0 1 4.243 0l9.612 9.612a3 3 0 0 1 0 4.243L45.855 32l16.998 16.998a3 3 0 0 1 0 4.243l-9.612 9.612a3 3 0 0 1-4.243 0L32 45.855 15.002 62.853a3 3 0 0 1-4.243 0L1.147 53.24a3 3 0 0 1 0-4.243L18.145 32 1.147 15.002a3 3 0 0 1 0-4.243l9.612-9.612a3 3 0 0 1 4.243 0Z"
                                 fill-rule="evenodd" />
                         </svg>
-                    </div>
-                    <div class="menu__mark-option">
+                    </label>
+
+                    <input class="menu__mark-option-radio" id="mastercard" type="radio" name="credit-card"
+                        value="mastercard" />
+
+                    <label class="menu__mark-option menu__mark-option--O" for="mastercard">
                         <svg id="icon-o-default" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
-                            <path
+                            <path fill="currentColor"
                                 d="M32 0c17.673 0 32 14.327 32 32 0 17.673-14.327 32-32 32C14.327 64 0 49.673 0 32 0 14.327 14.327 0 32 0Zm0 18.963c-7.2 0-13.037 5.837-13.037 13.037 0 7.2 5.837 13.037 13.037 13.037 7.2 0 13.037-5.837 13.037-13.037 0-7.2-5.837-13.037-13.037-13.037Z" />
                         </svg>
-                    </div>
+                    </label>
                 </div>
 
                 <p class="info">
@@ -78,6 +109,44 @@
                 <button type="button" class="menu__choice menu__choice--player">
                     New Game (vs Player)
                 </button>
+            </div>
+        </div>
+        <!-- </template> -->
+
+        <!-- game board -->
+        <!-- <template id="game-screen"> -->
+        <div class="board">
+            <div class="board__tile"></div> <!--1-->
+            <div class="board__tile"></div> <!--2-->
+            <div class="board__tile"></div> <!--3-->
+            <div class="board__tile"></div> <!--4-->
+            <div class="board__tile"></div> <!--5-->
+            <div class="board__tile"></div> <!--6-->
+            <div class="board__tile"></div> <!--7-->
+            <div class="board__tile"></div> <!--8-->
+            <div class="board__tile"></div> <!--9-->
+        </div>
+
+        <div class="game-stats">
+            <div class="game-stat game-stats__player1">
+                <p>
+                    <span class="game-stats__player1-icon">X</span>
+                    (<span class="game-stats__player1-notation">You</span>)
+                </p>
+                <p class="game-stats__value">14</p>
+            </div>
+
+            <div class="game-stat game-stats__ties">
+                <p>Ties</p>
+                <p class="game-stats__value">32</p>
+            </div>
+
+            <div class="game-stat game-stats__player2">
+                <p>
+                    <span class="game-stats__player2-icon">O</span>
+                    (<span class="game-stats__player2-notation">CPU</span>)
+                </p>
+                <p class="game-stats__value">11</p>
             </div>
         </div>
         <!-- </template> -->

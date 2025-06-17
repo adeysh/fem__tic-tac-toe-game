@@ -3,17 +3,50 @@
 :root {
     /* Colors */
 
-    --skyblue-1000: hsl(178, 60%, 48%);
-    --skyblue-500: hsl(178, 75%, 65%);
-    --yellow-1000: hsl(39, 87%, 54%);
-    --yellow-500: hsl(39, 100%, 69%);
+    --skyblue-1000: hsl(178, 60%, 42%);
+    --skyblue-500: hsl(178, 75%, 48%);
+    --yellow-1000: hsl(39, 87%, 50%);
+    --yellow-500: hsl(39, 100%, 60%);
+    --darkgreen-1500: hsl(202, 32%, 10%);
     --darkgreen-1000: hsl(202, 32%, 15%);
     --darkgreen-500: hsl(199, 35%, 19%);
+    --grey-1500: hsl(198, 23%, 50%);
     --grey-1000: hsl(198, 23%, 72%);
     --grey-500: hsl(197, 33%, 89%);
 
     // semantics
-    --bg-body: var(--darkgreen-500);
+    --bg-body: var(--darkgreen-1000);
+    --bg-menu-main: var(--darkgreen-500);
+    --text-menu-title: var(--grey-500);
+    --bg-menu-mark-options: var(--darkgreen-1000);
+
+    --border-bottom-menu-main: var(--darkgreen-1500);
+
+    --text-menu-info: var(--grey-500);
+    --bg-menu-choice-cpu-btn: var(--yellow-500);
+    --border-bottom-menu-choice-cpu-btn: var(--yellow-1000);
+    --bg-menu-choice-player-btn: var(--skyblue-500);
+    --border-bottom-menu-choice-player-btn: var(--skyblue-1000);
+
+    --bg-menu-mark-option-icon: var(--grey-500);
+    --bg-menu-mark-option-icon-checked: var(--darkgreen-1000);
+
+    --bg-menu-mark-option-checked: var(--grey-1000);
+    --bg-menu-mark-option-active: var(--grey-1000);
+    --bg-menu-mark-option-hover: var(--darkgreen-1000);
+
+    --bg-header-turn: var(--darkgreen-500);
+    --bg-header-turn-icon: var(--grey-1000);
+
+    --bg-header-restart-btn: var(--grey-1000);
+    --border-bottom-restart-btn: var(--grey-1500);
+
+    --bg-game-board: var(--darkgreen-1000);
+    --bg-game-board-tile: var(--darkgreen-500);
+
+    --bg-game-stats-player1: var(--skyblue-1000);
+    --bg-game-stats-ties: var(--grey-1000);
+    --bg-game-stats-player2: var(--yellow-500);
 
     /* font */
 
@@ -21,7 +54,9 @@
     --ff-primary: "Outfit", sans-serif;
 
     // font-size
+    --fs-xsmall: #{rem(14)};
     --fs-body: #{rem(16)};
+    --fs-small: #{rem(18)};
     --fs-medium: #{rem(24)};
 
     // font-weight

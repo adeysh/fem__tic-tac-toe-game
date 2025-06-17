@@ -5,3 +5,7 @@
     align-items: $align;
     gap: $gap;
 }
+
+@mixin bottom-border($width, $color) {
+    border-bottom: $width solid $color;
+}

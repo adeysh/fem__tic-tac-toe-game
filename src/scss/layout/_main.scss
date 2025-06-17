@@ -1,0 +1,22 @@
+@use '../abstracts' as a;
+
+.main {
+    @include a.flexbox($direction: column, $align: center, $gap: a.rem(32));
+    padding-inline: a.rem(20);
+
+    &--game-active {
+        padding-inline: 0;
+
+        @include a.bp($from: "tablet") {
+            @include a.flexbox($direction: column, $align: center, $gap: a.rem(16));
+        }
+    }
+
+    @include a.bp($from: "tablet") {
+        padding-inline: a.rem(100);
+    }
+
+    @include a.bp($from: "desktop") {
+        padding-inline: a.rem(300);
+    }
+}
