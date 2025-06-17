@@ -1,0 +1,93 @@
+@use '../abstracts' as a;
+
+.overlay {
+    @include a.flexbox($align: center, $justify: center);
+    position: fixed;
+    inset: 0;
+    background-color: var(--bg-game-overlay);
+    transition: opacity 0.3s ease-in-out;
+    pointer-events: none;
+
+    &__win-container {
+        @include a.flexbox($direction: column, $align: center, $justify: center, $gap: a.rem(32));
+        padding-block: a.rem(48);
+        width: 100%;
+        background-color: var(--bg-game-overlay-win-container);
+        text-transform: uppercase;
+    }
+
+    &__win-message {
+        color: var(--text-game-overlay-win-message);
+        font-size: var(--fs-body);
+        font-weight: var(--fw-semi-bold);
+        letter-spacing: 1.2px;
+
+        @include a.bp($from: "tablet") {
+            font-size: var(--fs-medium);
+            font-weight: var(--fw-bold);
+        }
+
+        @include a.bp($from: "desktop") {
+            font-size: var(--fs-large);
+            font-weight: var(--fw-bold);
+        }
+    }
+
+    &__win-player {
+        @include a.flexbox($direction: column, $align: center, $gap: a.rem(32));
+        color: var(--text-game-overlay-win-player);
+        font-size: var(--fs-medium);
+        font-weight: var(--fw-bold);
+        letter-spacing: 1.2px;
+
+
+        @include a.bp($from: "tablet") {
+            @include a.flexbox($direction: row, $align: center, $gap: a.rem(16));
+            font-size: var(--fs-large);
+        }
+
+        @include a.bp($from: "desktop") {
+            @include a.flexbox($direction: row, $align: center, $gap: a.rem(32));
+            font-size: var(--fs-xlarge);
+        }
+
+
+    }
+
+    &__win-icon {
+        width: 64px;
+    }
+
+    &__win-buttons {
+        @include a.flexbox($align: center, $gap: a.rem(16));
+    }
+
+    &__win-btn {
+        @include a.flexbox($align: center, $justify: center);
+        height: 40px;
+        font-size: var(--fs-body);
+        font-weight: var(--fw-bold);
+        text-transform: uppercase;
+        padding: a.rem(16);
+        border: none;
+        border-radius: a.rem(12);
+        color: var(--text-game-overlay-win-btn);
+
+        &--quit {
+            @include a.bottom-border($width: 8px, $color: var(--border-game-overlay-win-quit-btn));
+            background-color: var(--bg-game-overlay-win-quit-btn);
+        }
+
+        &--next-round {
+            @include a.bottom-border($width: 8px, $color: var(--border-game-overlay-win-next-round-btn));
+            background-color: var(--bg-game-overlay-win-next-round-btn);
+        }
+
+        @include a.bp($from: "tablet") {
+            font-size: var(--fs-medium);
+            padding: a.rem(32) a.rem(24);
+        }
+    }
+
+    display: none;
+}

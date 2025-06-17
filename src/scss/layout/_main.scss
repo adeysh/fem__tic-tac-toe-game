@@ -10,6 +10,10 @@
         @include a.bp($from: "tablet") {
             @include a.flexbox($direction: column, $align: center, $gap: a.rem(16));
         }
+
+        .game-stats {
+            display: none;
+        }
     }
 
     @include a.bp($from: "tablet") {

@@ -14,6 +14,8 @@
     --grey-1000: hsl(198, 23%, 72%);
     --grey-500: hsl(197, 33%, 89%);
 
+    --black: hsla(0, 0%, 0%, 0.6);
+
     // semantics
     --bg-body: var(--darkgreen-1000);
     --bg-menu-main: var(--darkgreen-500);
@@ -48,6 +50,17 @@
     --bg-game-stats-ties: var(--grey-1000);
     --bg-game-stats-player2: var(--yellow-500);
 
+    --bg-game-overlay: var(--black);
+    --bg-game-overlay-win-container: var(--darkgreen-500);
+    --text-game-overlay-win-message: var(--grey-1000);
+    --text-game-overlay-win-player: var(--skyblue-1000);
+
+    --text-game-overlay-win-btn: var(--darkgreen-500);
+    --bg-game-overlay-win-quit-btn: var(--grey-1000);
+    --border-game-overlay-win-quit-btn: var(--grey-1500);
+    --bg-game-overlay-win-next-round-btn: var(--yellow-500);
+    --border-game-overlay-win-next-round-btn: var(--yellow-1000);
+
     /* font */
 
     // font-family
@@ -58,6 +71,8 @@
     --fs-body: #{rem(16)};
     --fs-small: #{rem(18)};
     --fs-medium: #{rem(24)};
+    --fs-large: #{rem(32)};
+    --fs-xlarge: #{rem(48)};
 
     // font-weight
     --fw-regular: 400;

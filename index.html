@@ -28,9 +28,9 @@
     </style>
 </head>
 
-<body class="game-active">
+<body>
     <!-- header logo -->
-    <header class="header wrapper header--game-active">
+    <header class="header wrapper">
         <svg width="72" height="32" viewBox="0 0 72 32" xmlns="http://www.w3.org/2000/svg">
             <g fill="none" fill-rule="evenodd">
                 <path
@@ -150,6 +150,35 @@
             </div>
         </div>
         <!-- </template> -->
+
+        <!-- winner overlay -->
+        <div class="overlay" aria-hidden="true">
+            <div class="overlay__win-container">
+
+                <p class="overlay__win-message">You won!</p>
+
+                <h1 class="overlay__win-player">
+                    <span class="overlay__win-icon">
+                        <svg fill="#31c3bd" id="icon-x-win" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M15.002 1.147 32 18.145 48.998 1.147a3 3 0 0 1 4.243 0l9.612 9.612a3 3 0 0 1 0 4.243L45.855 32l16.998 16.998a3 3 0 0 1 0 4.243l-9.612 9.612a3 3 0 0 1-4.243 0L32 45.855 15.002 62.853a3 3 0 0 1-4.243 0L1.147 53.24a3 3 0 0 1 0-4.243L18.145 32 1.147 15.002a3 3 0 0 1 0-4.243l9.612-9.612a3 3 0 0 1 4.243 0Z"
+                                fill-rule="evenodd" />
+                        </svg>
+                    </span>
+                    takes the round
+                </h1>
+
+                <div class="overlay__win-buttons">
+                    <button type="button" class="overlay__win-btn overlay__win-btn--quit">
+                        Quit
+                    </button>
+
+                    <button type="button" class="overlay__win-btn overlay__win-btn--next-round">
+                        Next Round
+                    </button>
+                </div>
+            </div>
+        </div>
     </main>
     <footer class="attribution">
         Challenge by
