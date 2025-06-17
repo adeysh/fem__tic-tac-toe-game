@@ -6,7 +6,6 @@
     inset: 0;
     background-color: var(--bg-game-overlay);
     transition: opacity 0.3s ease-in-out;
-    pointer-events: none;
 
     &__win-container {
         @include a.flexbox($direction: column, $align: center, $justify: center, $gap: a.rem(32));
@@ -21,16 +20,6 @@
         font-size: var(--fs-body);
         font-weight: var(--fw-semi-bold);
         letter-spacing: 1.2px;
-
-        @include a.bp($from: "tablet") {
-            font-size: var(--fs-medium);
-            font-weight: var(--fw-bold);
-        }
-
-        @include a.bp($from: "desktop") {
-            font-size: var(--fs-large);
-            font-weight: var(--fw-bold);
-        }
     }
 
     &__win-player {
@@ -85,9 +74,7 @@
 
         @include a.bp($from: "tablet") {
             font-size: var(--fs-medium);
-            padding: a.rem(32) a.rem(24);
+            padding: a.rem(24);
         }
     }
-
-    display: none;
 }

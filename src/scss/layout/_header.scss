@@ -39,8 +39,6 @@
             font-weight: var(--fw-semi-bold);
             text-transform: uppercase;
         }
-
-        display: none;
     }
 
     .restart-btn {
@@ -53,7 +51,5 @@
         border-right: 0;
         border-left: 0;
         border-radius: a.rem(8);
-
-        display: none;
     }
 }
