@@ -12,6 +12,11 @@ const menuForm = document.getElementById("menu-form");
 const gameScreenTemplate = document.getElementById("game-screen");
 
 const overlay = document.getElementById("overlay");
+const overlayWinMessage = document.getElementById("overlay-win-message");
+const overlayWinPlayer = document.getElementById("overlay-win-player");
+const overlayWinIconX = overlayWinPlayer.querySelector(".overlay__win-icon--X");
+const overlayWinIconO = overlayWinPlayer.querySelector(".overlay__win-icon--O");
+
 const quitBtn = document.getElementById("quit-btn");
 const nextRoundBtn = document.getElementById("next-round-btn");
 
@@ -52,7 +57,7 @@ function displayBoardAndStats() {
 
     setupBoardEventListeners();
     updateTurnIcon(currentGameState);
-
+    updateScores(currentGameState);
 }
 
 function updateTurnIcon(currentGameState) {
@@ -96,14 +101,83 @@ function checkWinOrTie(currentGameState, tileIndex) {
             if (isWinningPattern) {
                 currentGameState.isGameOver = true;
                 currentGameState.winner = currentGameState.currentTurn;
+
+                if (currentGameState.currentTurn === "X") {
+                    currentGameState.scores.X++;
+                } else {
+                    currentGameState.scores.O++;
+                }
                 updateScores(currentGameState);
+                displayOverlay(currentGameState);
                 return;
             }
 
         }
 
         if (board.every(cell => cell !== "") && !currentGameState.isGameOver) {
-            console.log("its a tie");
+            currentGameState.isGameOver = true;
+            currentGameState.scores.ties++;
+            updateScores(currentGameState);
+            displayOverlay(currentGameState);
+            console.log(currentGameState);
+        }
+    }
+}
+
+function displayOverlay(currentGameState) {
+    overlay.classList.remove("hidden");
+
+    if (currentGameState.winner === null) {
+        console.log(overlayWinMessage.textContent);
+        overlayWinMessage.textContent = "Nobody";
+        overlayWinPlayer.innerHTML = "";
+        overlayWinPlayer.textContent = "Game Tied!";
+        return;
+    }
+
+    if (currentGameState.mode === "CPU") {
+        if (currentGameState.userMark === "X") {
+            if (currentGameState.winner === "X") {
+                overlayWinMessage.textContent = "You";
+                overlayWinPlayer.classList.add("overlay__win-player--X");
+                overlayWinIconX.classList.remove("hidden");
+            } else {
+                overlayWinMessage.textContent = "CPU";
+                overlayWinPlayer.classList.add("overlay__win-player--O");
+                overlayWinIconO.classList.remove("hidden");
+            }
+        } else {
+            if (currentGameState.winner === "O") {
+                overlayWinMessage.textContent = "You";
+                overlayWinPlayer.classList.add("overlay__win-player--O");
+                overlayWinIconO.classList.remove("hidden");
+            } else {
+                overlayWinMessage.textContent = "CPU";
+                overlayWinPlayer.classList.add("overlay__win-player--X");
+                overlayWinIconX.classList.remove("hidden");
+            }
+        }
+    } else {
+        if (currentGameState.userMark === "X") {
+            if (currentGameState.winner === "X") {
+                overlayWinMessage.textContent = "Player 1";
+                overlayWinPlayer.classList.add("overlay__win-player--X");
+                overlayWinIconX.classList.remove("hidden");
+            } else {
+                overlayWinMessage.textContent = "Player 2";
+                overlayWinPlayer.classList.add("overlay__win-player--O");
+                overlayWinIconO.classList.remove("hidden");
+            }
+        } else {
+            if (currentGameState.winner === "O") {
+                overlayWinMessage.textContent = "Player 1";
+                overlayWinPlayer.classList.add("overlay__win-player--O");
+                overlayWinIconO.classList.remove("hidden");
+            } else {
+                overlayWinMessage.textContent = "Player 2";
+                overlayWinPlayer.classList.add("overlay__win-player--X");
+                overlayWinIconX.classList.remove("hidden");
+            }
         }
     }
 }
@@ -118,7 +192,39 @@ function toggleTurn(currentGameState) {
 }
 
 function updateScores(currentGameState) {
+    const player1Notation = document.getElementById("player1-notation");
+    const player1Score = document.getElementById("player1-score");
 
+    const ties = document.getElementById("ties");
+
+    const player2Notation = document.getElementById("player2-notation");
+    const player2Score = document.getElementById("player2-score");
+
+    // console.log(currentGameState);
+
+    if (currentGameState.mode === "CPU") {
+        if (currentGameState.userMark === "X") {
+            player1Notation.textContent = "You";
+            player2Notation.textContent = "CPU";
+        } else {
+            player1Notation.textContent = "CPU";
+            player2Notation.textContent = "You";
+        }
+    }
+
+    if (currentGameState.mode === "Player") {
+        if (currentGameState.userMark === "X") {
+            player1Notation.textContent = "Player 1";
+            player2Notation.textContent = "Player 2";
+        } else {
+            player1Notation.textContent = "Player 2";
+            player2Notation.textContent = "Player 1";
+        }
+    }
+
+    player1Score.textContent = currentGameState.scores.X;
+    player2Score.textContent = currentGameState.scores.O;
+    ties.textContent = currentGameState.scores.ties;
 }
 
 function updateGameState(tileIndex) {

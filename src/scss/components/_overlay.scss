@@ -29,6 +29,14 @@
         font-weight: var(--fw-bold);
         letter-spacing: 1.2px;
 
+        &--X {
+            color: var(--text-game-overlay-win-player-player1);
+        }
+
+        &--O {
+            color: var(--text-game-overlay-win-player-player2);
+        }
+
 
         @include a.bp($from: "tablet") {
             @include a.flexbox($direction: row, $align: center, $gap: a.rem(16));
