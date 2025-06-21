@@ -68,3 +68,7 @@ button {
 .hidden {
     display: none !important;
 }
+
+.no-pointer {
+    pointer-events: none;
+}

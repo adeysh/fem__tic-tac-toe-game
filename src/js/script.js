@@ -37,7 +37,8 @@ function createInitialGameState(formData) {
         },
         isGameOver: false,
         winner: null,
-        hasGameStarted: false
+        hasGameStarted: false,
+        isCpuThinking: false,
     };
 }
 
@@ -49,6 +50,8 @@ function initGame(formData) {
 
     currentGameState = JSON.parse(JSON.stringify(initialStateBasedOnForm));
     currentGameState.hasGameStarted = true;
+
+
 }
 
 function displayBoardAndStats() {
@@ -58,28 +61,25 @@ function displayBoardAndStats() {
     setupBoardEventListeners();
     updateTurnIcon(currentGameState);
     updateScores(currentGameState);
+
+    if (
+        currentGameState.mode === "CPU" &&
+        currentGameState.userMark === "O" &&
+        currentGameState.currentTurn === "X"
+    ) {
+        makeCpuMove(currentGameState);
+    }
 }
 
 function updateTurnIcon(currentGameState) {
-    const iconX = turn.querySelector(".turn__icon--X");
-    const iconO = turn.querySelector(".turn__icon--O");
-
+    // const iconX = turn.querySelector(".turn__icon--X");
+    // const iconO = turn.querySelector(".turn__icon--O");
+    console.log(currentGameState);
+    const turnIcon = turn.querySelector(".turn__icon");
     if (currentGameState.currentTurn === "X") {
-        if (iconX.classList.contains("hidden")) {
-            iconX.classList.remove("hidden");
-        }
-
-        if (!iconO.classList.contains("hidden")) {
-            iconO.classList.add("hidden");
-        }
+        insertSVG(turnIcon, "icon-x-default.svg");
     } else {
-        if (!iconX.classList.contains("hidden")) {
-            iconX.classList.add("hidden");
-        }
-
-        if (iconO.classList.contains("hidden")) {
-            iconO.classList.remove("hidden");
-        }
+        insertSVG(turnIcon, "icon-o-default.svg");
     }
 }
 
@@ -119,7 +119,6 @@ function checkWinOrTie(currentGameState, tileIndex) {
             currentGameState.scores.ties++;
             updateScores(currentGameState);
             displayOverlay(currentGameState);
-            console.log(currentGameState);
         }
     }
 }
@@ -183,10 +182,31 @@ function displayOverlay(currentGameState) {
 }
 
 function toggleTurn(currentGameState) {
-    if (currentGameState.currentTurn === "X") {
-        currentGameState.currentTurn = "O";
+    console.log("inside toggle turn");
+    if (currentGameState.mode === "CPU") {
+        console.log("game mode cpu")
+        if (currentGameState.userMark === "X") {
+            console.log("user mark x")
+            if (currentGameState.currentTurn === "X") {
+                console.log("current turn x");
+                currentGameState.currentTurn = "O";
+                console.log("after setting turn to o:", currentGameState.currentTurn);
+                makeCpuMove(currentGameState);
+                return;
+            } else {
+                currentGameState.currentTurn = "X";
+            }
+        } else {
+            if (currentGameState.currentTurn === "O") {
+                currentGameState.currentTurn = "X";
+                makeCpuMove(currentGameState);
+                return;
+            } else {
+                currentGameState.currentTurn = "O";
+            }
+        }
     } else {
-        currentGameState.currentTurn = "X";
+        currentGameState.currentTurn = currentGameState.currentTurn === "X" ? "O" : "X";
     }
     updateTurnIcon(currentGameState);
 }
@@ -200,7 +220,6 @@ function updateScores(currentGameState) {
     const player2Notation = document.getElementById("player2-notation");
     const player2Score = document.getElementById("player2-score");
 
-    // console.log(currentGameState);
 
     if (currentGameState.mode === "CPU") {
         if (currentGameState.userMark === "X") {
@@ -228,9 +247,10 @@ function updateScores(currentGameState) {
 }
 
 function updateGameState(tileIndex) {
+    console.log("inside update game state");
     currentGameState.board[tileIndex] = currentGameState.currentTurn;
     checkWinOrTie(currentGameState, tileIndex);
-    toggleTurn(currentGameState);
+    // toggleTurn(currentGameState);
 }
 
 function displayGame() {
@@ -279,32 +299,89 @@ async function insertSVG(targetElement, filename) {
     }
 }
 
+function makeCpuMove(currentGameState) {
+    console.log("inside makecpumove, turn is: ", currentGameState.currentTurn);
+    const board = document.getElementById("board");
+
+    const emptyIndices = currentGameState.board
+        .map((val, idx) => val === "" ? idx : null)
+        .filter(val => val !== null);
+
+    const randomIndex = emptyIndices[
+        Math.floor(Math.random() * emptyIndices.length)
+    ];
+    if (!currentGameState.isGameOver && randomIndex !== undefined) {
+
+        const tile = board.children[randomIndex];
+        tile.innerHTML = "";
+
+        const cpuMark = currentGameState.player2Mark;
+        insertSVG(tile, cpuMark === "X" ? "icon-x.svg" : "icon-o.svg");
+        tile.classList.add("filled");
+
+        currentGameState.board[randomIndex] = cpuMark;
+        checkWinOrTie(currentGameState, randomIndex);
+        console.log(cpuMark);
+
+        if (!currentGameState.isGameOver) {
+            currentGameState.currentTurn = currentGameState.userMark;
+            updateTurnIcon(currentGameState);
+        }
+    }
+}
+
 function setupBoardEventListeners() {
     const board = document.getElementById("board");
     if (!board) return;
 
     board.addEventListener("click", (e) => {
         const tile = e.target.closest(".board__tile");
-        if (tile && board.contains(tile)) {
-            const tileIndex = Array.from(board.children).indexOf(tile);
-            console.log(`Tile ${tileIndex + 1} clicked!`);
 
-            tile.innerHTML = "";
+        if (!tile || !board.contains(tile) || tile.classList.contains("filled")) return;
 
-            if (currentGameState.currentTurn === "X") {
-                insertSVG(tile, "icon-x.svg");
-            } else {
-                insertSVG(tile, "icon-o.svg");
+        const tileIndex = Array.from(board.children).indexOf(tile);
+        console.log(`Tile ${tileIndex + 1} clicked!`);
+
+        tile.innerHTML = "";
+
+
+        if (currentGameState.mode === "CPU") {
+            const isPlayerTurn = currentGameState.currentTurn === currentGameState.userMark;
+
+            if (isPlayerTurn) {
+                const playerMark = currentGameState.userMark;
+                insertSVG(tile, playerMark === "X" ? "icon-x.svg" : "icon-o.svg");
+                tile.classList.add("filled");
+                updateGameState(tileIndex);
+
+                if (!currentGameState.isGameOver) {
+                    currentGameState.currentTurn = currentGameState.player2Mark;
+                    currentGameState.isCpuThinking = true;
+                    board.classList.add("no-pointer");
+                    updateTurnIcon(currentGameState);
+
+                    setTimeout(() => {
+                        makeCpuMove(currentGameState);
+                        currentGameState.isCpuThinking = false;
+                        board.classList.remove("no-pointer");
+                    }, 1500);
+                }
             }
+        } else {
+            const currentMark = currentGameState.currentTurn;
+            insertSVG(tile, currentMark === "X" ? "icon-x.svg" : "icon-o.svg");
             tile.classList.add("filled");
             updateGameState(tileIndex);
         }
     });
 
-    board.addEventListener("mouseenter", handleHover, true);
-    board.addEventListener("mouseleave", clearHover, true);
+    board.addEventListener("mouseover", handleHover, true);
+    board.addEventListener("mouseout", clearHover, true);
 
     function handleHover(e) {
+
+        if (currentGameState.isCpuThinking) return;
+
         const tile = e.target.closest(".board__tile");
         if (!tile || board.contains(tile) === false) return;
         if (tile.classList.contains("filled")) return;
@@ -313,13 +390,17 @@ function setupBoardEventListeners() {
         const iconO = tile.querySelector(".board__tile--O");
 
         const isXTurn = currentGameState.currentTurn === "X";
-
+        console.log(currentGameState.currentTurn);
         iconX?.classList.toggle("hidden", !isXTurn);
         iconO?.classList.toggle("hidden", isXTurn);
     }
 
     function clearHover(e) {
         const tile = e.target.closest(".board__tile");
+        const toElement = e.relatedTarget;
+
+        if (tile && tile.contains(toElement)) return;
+
         if (!tile || tile.classList.contains("filled")) return;
 
         const iconX = tile.querySelector(".board__tile--X");
