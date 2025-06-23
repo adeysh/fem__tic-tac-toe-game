@@ -29,10 +29,12 @@
         padding: a.rem(5) a.rem(24);
         border-radius: a.rem(8);
 
-
-        svg {
+        &__icon svg {
             width: a.rem(20);
         }
+
+        // svg {
+        // }
 
         // &__icon-image {
         //     width: 20px;
