@@ -17,6 +17,18 @@
         background-color: var(--bg-game-board-tile);
         border-radius: a.rem(12);
 
+        &--win-X {
+            background-color: var(--bg-game-board-tile-win-X);
+        }
+
+        &--win-O {
+            background-color: var(--bg-game-board-tile-win-O);
+        }
+
+        .svg-icon {
+            width: a.rem(64);
+        }
+
         @include a.bp($from: "tablet") {
             width: 100%;
             height: 150px;

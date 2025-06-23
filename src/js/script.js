@@ -58,6 +58,7 @@ async function displayBoardAndStats() {
     setupBoardEventListeners();
     await updateTurnIcon(currentGameState);
     updateScores(currentGameState);
+    clearAllHoverIcons();
 
     if (
         currentGameState.mode === "CPU" &&
@@ -85,7 +86,7 @@ const winPatterns = {
     diagonals: [[0, 4, 8], [2, 4, 6]]
 };
 
-function checkWinOrTie(currentGameState, tileIndex, lastPlayedMark) {
+async function checkWinOrTie(currentGameState, tileIndex, lastPlayedMark) {
     const board = currentGameState.board;
 
     for (const winningLine in winPatterns) {
@@ -97,15 +98,14 @@ function checkWinOrTie(currentGameState, tileIndex, lastPlayedMark) {
             if (isWinningPattern) {
                 currentGameState.isGameOver = true;
                 currentGameState.winner = lastPlayedMark;
-
-                // if (currentGameState.currentTurn === "X") {
-                //     currentGameState.scores.X++;
-                // } else {
-                //     currentGameState.scores.O++;
-                // }
+                currentGameState.winningTiles = winPattern;
                 currentGameState.scores[lastPlayedMark]++;
                 updateScores(currentGameState);
-                displayOverlay(currentGameState);
+                await highlightWinningTiles(winPattern, lastPlayedMark);
+
+                setTimeout(() => {
+                    displayOverlay(currentGameState);
+                }, 500)
                 return;
             }
 
@@ -146,7 +146,7 @@ async function displayOverlay(currentGameState) {
         const isUserWinner = winner === currentGameState.userMark;
         overlayWinMessage.textContent = isUserWinner ? "You" : "CPU";
     } else {
-        const isPlayer1Winner = winner = currentGameState.userMark;
+        const isPlayer1Winner = winner === currentGameState.userMark;
         overlayWinMessage.textContent = isPlayer1Winner ? "Player 1" : "Player 2";
     }
 
@@ -250,6 +250,19 @@ function hideWinnerOverlay() {
     menu.classList.remove("hidden");
 }
 
+async function highlightWinningTiles(indices, mark) {
+    const boardTiles = document.querySelectorAll(".board__tile");
+
+    for (const index of indices) {
+        const tile = boardTiles[index];
+        tile.classList.add("board__tile--win");
+        tile.classList.add(`board__tile--win-${mark}`);
+        tile.innerHTML = "";
+        console.log(tile.innerHTML);
+        await insertSVG(tile, mark === "X" ? "icon-x-win-board.svg" : "icon-o-win-board.svg", "svg-icon");
+    }
+}
+
 function hideWinnerOverlayForNextRound() {
     overlay.classList.add("hidden");
     overlay.setAttribute("aria-hidden", "true");
@@ -293,7 +306,8 @@ async function initNextRound() {
 
     const tiles = document.querySelectorAll(".board__tile");
     tiles.forEach(tile => {
-        tile.classList.remove("filled");
+        console.log(tile.classList);
+        tile.classList.remove("filled", "board__tile--win", "board__tile--win-X", "board__tile--win-O");
         tile.innerHTML = "";
     });
 
@@ -360,6 +374,19 @@ async function insertSVG(container, svgFileName, extraClass = "") {
     }
 }
 
+function clearAllHoverIcons() {
+    const tiles = document.querySelectorAll(".board__tile");
+    tiles.forEach(tile => {
+        const iconX = tile.querySelector(".board__tile--X");
+        const iconO = tile.querySelector(".board__tile--O");
+
+        if (iconX) iconX.classList.add("hidden");
+        if (iconO) iconO.classList.add("hidden");
+    });
+}
+
+
+
 async function makeCpuMove(currentGameState) {
     const board = document.getElementById("board");
 
@@ -371,6 +398,7 @@ async function makeCpuMove(currentGameState) {
         Math.floor(Math.random() * emptyIndices.length)
     ];
     if (!currentGameState.isGameOver && randomIndex !== undefined) {
+        clearAllHoverIcons();
 
         const tile = board.children[randomIndex];
         tile.innerHTML = "";
@@ -422,10 +450,12 @@ function setupBoardEventListeners() {
                     await updateTurnIcon(currentGameState);
 
                     setTimeout(() => {
+                        clearAllHoverIcons();
                         makeCpuMove(currentGameState);
                         currentGameState.isCpuThinking = false;
                         board.classList.remove("no-pointer");
-                    }, 1500);
+
+                    }, 1000);
                 }
             }
         } else {
