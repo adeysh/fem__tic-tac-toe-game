@@ -58,5 +58,10 @@
         border-right: 0;
         border-left: 0;
         border-radius: a.rem(8);
+        transition: all 200ms ease-in-out;
+
+        &:hover {
+            background-color: var(--bg-header-restart-btn-hover);
+        }
     }
 }

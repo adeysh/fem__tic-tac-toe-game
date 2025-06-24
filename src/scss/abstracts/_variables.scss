@@ -30,16 +30,21 @@
     --bg-menu-choice-player-btn: var(--skyblue-500);
     --border-bottom-menu-choice-player-btn: var(--skyblue-1000);
 
-    --bg-menu-mark-option-icon: var(--grey-500);
+    --bg-menu-mark-option-icon: var(--darkgreen-1000);
     --bg-menu-mark-option-icon-checked: var(--darkgreen-1000);
 
-    --bg-menu-mark-option-checked: var(--grey-1000);
+    --bg-menu-mark-option-icon: var(--grey-1000);
+    --bg-menu-mark-option-X-checked: var(--skyblue-1000);
+    --bg-menu-mark-option-O-checked: var(--yellow-1000);
     --bg-menu-mark-option-active: var(--grey-1000);
-    --bg-menu-mark-option-hover: var(--darkgreen-1000);
+    --bg-menu-mark-option-hover: var(--darkgreen-1500);
+    --bg-menu-mark-option-X-hover: var(--skyblue-500);
+    --bg-menu-mark-option-O-hover: var(--yellow-500);
 
     --bg-header-turn: var(--darkgreen-500);
     --bg-header-turn-icon: var(--grey-1000);
 
+    --bg-header-restart-btn-hover: var(--grey-500);
     --bg-header-restart-btn: var(--grey-1000);
     --border-bottom-restart-btn: var(--grey-1500);
 

@@ -5,7 +5,14 @@
     position: fixed;
     inset: 0;
     background-color: var(--bg-game-overlay);
+    -webkit-backdrop-filter: blur(2px);
+    backdrop-filter: blur(2px);
     transition: opacity 0.3s ease-in-out;
+
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-50px);
+    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
 
     &__win-container {
         @include a.flexbox($direction: column, $align: center, $justify: center, $gap: a.rem(32));
@@ -84,5 +91,11 @@
             font-size: var(--fs-medium);
             padding: a.rem(24);
         }
+    }
+
+    &--visible {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
     }
 }

@@ -10,6 +10,7 @@
     gap: a.rem(16);
 
     &__tile {
+        position: relative;
         @include a.flexbox($align: center, $justify: center);
         @include a.bottom-border($width: 8px, $color: var(--border-bottom-menu-main));
         width: 100px;

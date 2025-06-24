@@ -122,7 +122,7 @@ async function checkWinOrTie(currentGameState, tileIndex, lastPlayedMark) {
 }
 
 async function displayOverlay(currentGameState) {
-    overlay.classList.remove("hidden");
+    overlay.classList.add("overlay--visible");
 
     overlayWinPlayer.classList.remove("overlay__win-player--X", "overlay__win-player--O");
 
@@ -150,7 +150,7 @@ async function displayOverlay(currentGameState) {
         overlayWinMessage.textContent = isPlayer1Winner ? "Player 1" : "Player 2";
     }
 
-    await insertSVG(overlayWinIconWrapper, winnerIconFile, "overlay__icon");
+    await insertSVG(overlayWinIconWrapper, winnerIconFile, ["overlay__icon"]);
 }
 
 async function toggleTurn(currentGameState) {
@@ -238,13 +238,13 @@ function displayGame() {
 }
 
 function displayWinnerOverlay() {
-    overlay.classList.remove("hidden");
+    overlay.classList.add("overlay--visible");
     overlay.setAttribute("aria-hidden", "false");
     main.setAttribute("inert", "");
 }
 
 function hideWinnerOverlay() {
-    overlay.classList.add("hidden");
+    overlay.classList.remove("overlay--visible");
     overlay.setAttribute("aria-hidden", "true");
     main.removeAttribute("inert");
     menu.classList.remove("hidden");
@@ -259,12 +259,12 @@ async function highlightWinningTiles(indices, mark) {
         tile.classList.add(`board__tile--win-${mark}`);
         tile.innerHTML = "";
         console.log(tile.innerHTML);
-        await insertSVG(tile, mark === "X" ? "icon-x-win-board.svg" : "icon-o-win-board.svg", "svg-icon");
+        await insertSVG(tile, mark === "X" ? "icon-x-win-board.svg" : "icon-o-win-board.svg", ["svg-icon"]);
     }
 }
 
 function hideWinnerOverlayForNextRound() {
-    overlay.classList.add("hidden");
+    overlay.classList.remove("overlay--visible");
     overlay.setAttribute("aria-hidden", "true");
     main.removeAttribute("inert");
 }
@@ -357,7 +357,7 @@ async function restartGame() {
     }
 }
 
-async function insertSVG(container, svgFileName, extraClass = "") {
+async function insertSVG(container, svgFileName, extraClasses = []) {
     try {
         const res = await fetch(`/assets/images/${svgFileName}`);
         const svgText = await res.text();
@@ -366,7 +366,14 @@ async function insertSVG(container, svgFileName, extraClass = "") {
         const svgElement = svgDoc.querySelector("svg");
 
         if (svgElement) {
-            if (extraClass) svgElement.classList.add(extraClass);
+            if (!Array.isArray(extraClasses)) {
+                throw new Error("extraClasses must be an array of strings");
+            }
+
+            if (extraClasses.length > 0) {
+                svgElement.classList.add(...extraClasses);
+            }
+
             container.appendChild(svgElement);
         }
     } catch (err) {
@@ -487,7 +494,7 @@ function setupBoardEventListeners() {
         const isXTurn = currentGameState.currentTurn === "X";
         const iconName = isXTurn ? "icon-x-outline.svg" : "icon-o-outline.svg";
 
-        await insertSVG(tile, iconName, "hover-icon");
+        await insertSVG(tile, iconName, ["hover-icon"]);
     }
 
     function clearHover(e) {
@@ -537,5 +544,3 @@ nextRoundBtn.addEventListener("click", () => {
 restartBtn.addEventListener('click', () => {
     restartGame();
 });
-
-// displayWinnerOverlay();
