@@ -47,3 +47,13 @@
 .filled {
     pointer-events: none;
 }
+
+.board__tile.hover-border-X:hover {
+    border: 2px solid #31C3BD;
+    /* X color */
+}
+
+.board__tile.hover-border-O:hover {
+    border: 2px solid #F2B137;
+    /* O color */
+}
