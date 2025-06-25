@@ -4,6 +4,7 @@ import { displayGame } from "./ui";
 import { initLifecycle } from "./lifecycle";
 import { initHoverEffects } from "./hover";
 import { initCpuLogic } from "./cpu";
+import { initCpuDifficultyDropdown } from './cpuDifficulty';
 
 const menuForm = document.getElementById("menu-form");
 
@@ -19,6 +20,8 @@ menuForm.addEventListener("submit", async (e) => {
     const formData = Object.fromEntries(new FormData(menuForm));
     formData["menu-choice"] = actionValue;
 
+    console.log(formData);
+
     if (!formData.mark) {
         alert("Please select 'X' or 'O' before starting the game.");
         return;
@@ -31,3 +34,5 @@ menuForm.addEventListener("submit", async (e) => {
     initCpuLogic(gameState);
     initLifecycle(gameState);
 });
+
+document.addEventListener("DOMContentLoaded", initCpuDifficultyDropdown);

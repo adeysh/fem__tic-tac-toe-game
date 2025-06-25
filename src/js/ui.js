@@ -61,6 +61,7 @@ export async function displayGame(gameState) {
     const body = document.getElementById("body");
     const turn = document.getElementById("turn");
     const restartBtn = document.getElementById("restart-btn");
+    const headerQuitBtn = document.getElementById("header-quit-btn");
     const header = document.getElementById("header");
     const main = document.getElementById("main");
     const gameScreenTemplate = document.getElementById("game-screen");
@@ -87,6 +88,7 @@ export async function displayGame(gameState) {
     body.classList.add("game-active");
     turn.classList.remove("hidden");
     restartBtn.classList.remove("hidden");
+    headerQuitBtn.classList.remove("hidden");
     header.classList.add("header--game-active");
     main.classList.add("main--game-active");
 

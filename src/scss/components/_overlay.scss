@@ -22,6 +22,14 @@
         text-transform: uppercase;
     }
 
+    &__quit-container {
+        @include a.flexbox($direction: column, $align: center, $justify: center, $gap: a.rem(32));
+        padding-block: a.rem(48);
+        width: 100%;
+        background-color: var(--bg-game-overlay-win-container);
+        text-transform: uppercase;
+    }
+
     &__win-message {
         color: var(--text-game-overlay-win-message);
         font-size: var(--fs-body);
@@ -54,8 +62,24 @@
             @include a.flexbox($direction: row, $align: center, $gap: a.rem(32));
             font-size: var(--fs-xlarge);
         }
+    }
 
+    &__quit-message {
+        @include a.flexbox($direction: column, $align: center, $gap: a.rem(32));
+        color: var(--text-game-overlay-win-player);
+        font-size: var(--fs-medium);
+        font-weight: var(--fw-bold);
+        letter-spacing: 1.2px;
 
+        @include a.bp($from: "tablet") {
+            @include a.flexbox($direction: row, $align: center, $gap: a.rem(16));
+            font-size: var(--fs-large);
+        }
+
+        @include a.bp($from: "desktop") {
+            @include a.flexbox($direction: row, $align: center, $gap: a.rem(32));
+            font-size: var(--fs-xlarge);
+        }
     }
 
     &__win-icon {
@@ -63,6 +87,10 @@
     }
 
     &__win-buttons {
+        @include a.flexbox($align: center, $gap: a.rem(16));
+    }
+
+    &__quit-buttons {
         @include a.flexbox($align: center, $gap: a.rem(16));
     }
 
@@ -83,6 +111,33 @@
         }
 
         &--next-round {
+            @include a.bottom-border($width: 8px, $color: var(--border-game-overlay-win-next-round-btn));
+            background-color: var(--bg-game-overlay-win-next-round-btn);
+        }
+
+        @include a.bp($from: "tablet") {
+            font-size: var(--fs-medium);
+            padding: a.rem(24);
+        }
+    }
+
+    &__quit-btn {
+        @include a.flexbox($align: center, $justify: center);
+        height: 40px;
+        font-size: var(--fs-body);
+        font-weight: var(--fw-bold);
+        text-transform: uppercase;
+        padding: a.rem(16);
+        border: none;
+        border-radius: a.rem(12);
+        color: var(--text-game-overlay-win-btn);
+
+        &--confirm {
+            @include a.bottom-border($width: 8px, $color: var(--border-game-overlay-win-quit-btn));
+            background-color: var(--bg-game-overlay-win-quit-btn);
+        }
+
+        &--cancel {
             @include a.bottom-border($width: 8px, $color: var(--border-game-overlay-win-next-round-btn));
             background-color: var(--bg-game-overlay-win-next-round-btn);
         }

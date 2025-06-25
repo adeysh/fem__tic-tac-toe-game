@@ -10,5 +10,6 @@ export function createInitialGameState(formData) {
         winner: null,
         hasGameStarted: false,
         isCpuThinking: false,
+        cpuDifficulty: formData["cpu-difficulty"] || "easy",
     };
 }
