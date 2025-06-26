@@ -35,8 +35,7 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [News Homepage](https://www.frontendmentor.io/solutions/responsive-news-homepage-with-using-grid-and-subgrid-layout-lL3tqWv7-M)
-- Live Site URL: [News Homepage](https://fem-news-homepage-woad.vercel.app/)
+- Live Site URL: [Tic Tac Toe](https://fem-tic-tac-toe-game.vercel.app/)
 
 ## My process
 
