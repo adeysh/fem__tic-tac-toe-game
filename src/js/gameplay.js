@@ -1,6 +1,7 @@
 import { winPatterns } from "./config";
 import { updateScores, showOverlay } from "./ui";
 import { insertSVG } from "./svgUtils"
+import { saveGameState } from "./gameState";
 
 export async function checkWinOrTie(gameState, lastMark) {
     const allPatterns = Object.values(winPatterns).flat();
@@ -12,6 +13,7 @@ export async function checkWinOrTie(gameState, lastMark) {
             gameState.scores[lastMark]++;
             await highlightWinningTiles(line, lastMark);
             updateScores(gameState.scores, gameState.mode, gameState.userMark);
+            saveGameState(gameState);
             await showOverlay(lastMark, gameState.mode, gameState.userMark);
             return;
         }
@@ -22,6 +24,7 @@ export async function checkWinOrTie(gameState, lastMark) {
         gameState.winner = null;
         gameState.scores.ties++;
         updateScores(gameState.scores, gameState.mode, gameState.userMark);
+        saveGameState(gameState);
         await showOverlay(null, gameState.mode, gameState.userMark);
     }
 }

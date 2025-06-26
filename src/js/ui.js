@@ -1,3 +1,4 @@
+import { saveGameState } from "./gameState";
 import { insertSVG } from "./svgUtils";
 
 export async function updateTurnIcon(currentTurn) {
@@ -99,6 +100,7 @@ export async function displayGame(gameState) {
     main.classList.add("main--game-active");
 
     updateScores(gameState.scores, gameState.mode, gameState.userMark);
+    saveGameState(gameState);
     await updateTurnIcon(gameState.currentTurn);
 }
 

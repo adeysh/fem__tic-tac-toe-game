@@ -2,6 +2,8 @@ import { updateTurnIcon, updateScores, showOverlay } from './ui';
 import { insertSVG } from './svgUtils';
 import { initCpuLogic } from './cpu';
 import { initHoverEffects } from './hover';
+import { saveGameState } from './gameState';
+import { clearGameState } from './main';
 
 export function initLifecycle(gameState) {
     const restartBtn = document.getElementById("restart-btn");
@@ -15,7 +17,7 @@ export function initLifecycle(gameState) {
     const confirmNoBtn = document.getElementById("confirm-quit-no");
 
     restartBtn?.addEventListener('click', () => {
-        resetBoard(gameState, true);
+        resetBoard(gameState);
     });
 
     headerQuitBtn?.addEventListener('click', () => {
@@ -25,7 +27,7 @@ export function initLifecycle(gameState) {
     });
 
     confirmYesBtn?.addEventListener('click', () => {
-        window.location.reload();
+        quitGame();
     });
 
     confirmNoBtn?.addEventListener('click', () => {
@@ -39,15 +41,15 @@ export function initLifecycle(gameState) {
     });
 
     OverlayQuitBtn?.addEventListener("click", () => {
-        window.location.reload();
+        quitGame();
     });
 
     nextRoundBtn?.addEventListener("click", async (e) => {
-        await resetBoard(gameState, false);
+        await resetBoard(gameState);
     });
 }
 
-async function resetBoard(gameState, isRestart = false) {
+async function resetBoard(gameState) {
     gameState.board = Array(9).fill("");
     gameState.isGameOver = false;
     gameState.winner = null;
@@ -68,6 +70,7 @@ async function resetBoard(gameState, isRestart = false) {
 
     await updateTurnIcon(gameState.currentTurn);
     updateScores(gameState.scores, gameState.mode, gameState.userMark);
+    saveGameState(gameState);
 
     if (
         gameState.mode === "CPU" &&
@@ -75,4 +78,11 @@ async function resetBoard(gameState, isRestart = false) {
     ) {
         initCpuLogic(gameState);
     }
+
+    saveGameState(gameState);
+}
+
+function quitGame() {
+    clearGameState();
+    window.location.reload();
 }

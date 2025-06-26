@@ -2,6 +2,7 @@ import { insertSVG } from "./svgUtils";
 import { checkWinOrTie } from "./gameplay";
 import { updateTurnIcon } from "./ui";
 import { winPatterns } from './config';
+import { saveGameState } from './gameState';
 
 export function initCpuLogic(gameState) {
     if (gameState.mode !== "CPU") return;
@@ -63,6 +64,7 @@ export async function tryCpuMove(gameState) {
         ? "icon-x.svg" : "icon-o.svg");
     tile.classList.add("filled");
     gameState.board[moveIndex] = gameState.player2Mark;
+    saveGameState(gameState);
     await checkWinOrTie(gameState, gameState.player2Mark);
 
     gameState.isCpuThinking = false;

@@ -13,3 +13,9 @@ export function createInitialGameState(formData) {
         cpuDifficulty: formData["cpu-difficulty"] || "easy",
     };
 }
+
+export function saveGameState(gameState) {
+    if (!gameState?.isGameOver) {
+        localStorage.setItem("ticTacToeGameState", JSON.stringify(gameState));
+    }
+}
