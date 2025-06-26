@@ -8,23 +8,6 @@
         @include a.flexbox($align: center, $gap: a.rem(16));
     }
 
-    &--game-active {
-        @include a.flexbox($align: center, $justify: space-between);
-        padding-inline: 0;
-
-        @include a.bp($from: "tablet") {
-            @include a.flexbox($align: center, $justify: space-between);
-            padding-inline: a.rem(100);
-        }
-    }
-
-    @include a.bp($from: "tablet") {}
-
-    @include a.bp($from: "desktop") {
-        padding-inline: a.rem(300);
-    }
-
-
     .turn {
         @include a.flexbox($align: center, $justify: center, $gap: a.rem(12));
         @include a.bottom-border($width: a.rem(5), $color: var(--border-bottom-menu-main));
@@ -36,14 +19,6 @@
         &__icon svg {
             width: a.rem(20);
         }
-
-        // svg {
-        // }
-
-        // &__icon-image {
-        //     width: 20px;
-        //     background-col
-        // }
 
         p {
             font-size: var(--fs-medium);
@@ -67,6 +42,10 @@
         &:hover {
             background-color: var(--bg-header-restart-btn-hover);
         }
+
+        &:active {
+            border: none;
+        }
     }
 
     .quit-btn {
@@ -85,5 +64,23 @@
         &:hover {
             background-color: var(--bg-header-restart-btn-hover);
         }
+
+        &:active {
+            border: none;
+        }
+    }
+
+    &--game-active {
+        @include a.flexbox($align: center, $justify: space-between);
+        padding-inline: 0;
+
+        @include a.bp($from: "tablet") {
+            @include a.flexbox($align: center, $justify: space-between);
+            padding-inline: a.rem(100);
+        }
+    }
+
+    @include a.bp($from: "desktop") {
+        padding-inline: a.rem(300);
     }
 }

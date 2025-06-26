@@ -34,6 +34,8 @@ async function highlightWinningTiles(indices, mark) {
         tile.classList.add("board__tile--win");
         tile.classList.add(`board__tile--win-${mark}`);
         tile.innerHTML = "";
-        await insertSVG(tile, mark === "X" ? "icon-x-win-board.svg" : "icon-o-win-board.svg", ["svg-icon"]);
+        await insertSVG(tile, mark === "X"
+            ? "icon-x-win-board.svg" : "icon-o-win-board.svg", ["svg-icon"]
+        );
     }
 }

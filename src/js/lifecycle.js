@@ -19,7 +19,6 @@ export function initLifecycle(gameState) {
     });
 
     headerQuitBtn?.addEventListener('click', () => {
-        console.log('headerQuitBtn:', headerQuitBtn);
         overlayWinContainer.classList.add("hidden");
         quitConfirmContainer.classList.remove("hidden");
         showOverlay(null, gameState.mode, gameState.userMark);
@@ -44,7 +43,6 @@ export function initLifecycle(gameState) {
     });
 
     nextRoundBtn?.addEventListener("click", async (e) => {
-        console.log("Next round clicked");
         await resetBoard(gameState, false);
     });
 }
@@ -58,13 +56,15 @@ async function resetBoard(gameState, isRestart = false) {
     gameState.currentTurn = "X";
 
     document.querySelectorAll(".board__tile").forEach(tile => {
-        tile.classList.remove("filled", "board__tile--win", "board__tile--win-X", "board__tile--win-O");
+        tile.classList.remove(
+            "filled", "board__tile--win", "board__tile--win-X",
+            "board__tile--win-O"
+        );
         tile.innerHTML = "";
     });
 
     const overlay = document.getElementById("overlay");
     overlay.classList.remove("overlay--visible");
-    console.log("Overlay check:", document.querySelector(".overlay__win-player").innerHTML);
 
     await updateTurnIcon(gameState.currentTurn);
     updateScores(gameState.scores, gameState.mode, gameState.userMark);

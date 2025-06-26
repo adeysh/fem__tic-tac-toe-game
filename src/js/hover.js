@@ -7,13 +7,19 @@ export function initHoverEffects(gameState) {
         if (gameState.isCpuThinking) return;
 
         const tile = e.target.closest(".board__tile");
-        if (!tile || !board.contains(tile) || tile.classList.contains("filled") || tile.querySelector(".hover-icon")) return;
+        if (
+            !tile || !board.contains(tile) ||
+            tile.classList.contains("filled") ||
+            tile.querySelector(".hover-icon")
+        ) return;
 
         removeHoverClasses(tile);
-        const hoverClass = gameState.currentTurn === "X" ? "hover-border-X" : "hover-border-O";
+        const hoverClass = gameState.currentTurn === "X"
+            ? "hover-border-X" : "hover-border-O";
         tile.classList.add(hoverClass);
 
-        const iconName = gameState.currentTurn === "X" ? "icon-x-outline.svg" : "icon-o-outline.svg";
+        const iconName = gameState.currentTurn === "X"
+            ? "icon-x-outline.svg" : "icon-o-outline.svg";
         await insertSVG(tile, iconName, ["hover-icon"]);
     });
 

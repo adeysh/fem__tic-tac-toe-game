@@ -11,7 +11,6 @@
     <title>Frontend Mentor | Tic Tac Toe</title>
     <script type="module" src="/src/main.js" defer></script>
 
-    <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
     <style>
         .attribution {
             font-size: 12px;
@@ -29,7 +28,7 @@
 </head>
 
 <body id="body">
-    <!-- header logo -->
+    <!-- header -->
     <header class="header wrapper" id="header">
         <svg width="72" height="32" viewBox="0 0 72 32" xmlns="http://www.w3.org/2000/svg">
             <g fill="none" fill-rule="evenodd">
@@ -44,20 +43,7 @@
 
         <!-- player turn indicator -->
         <div class="turn hidden" id="turn">
-            <span class="turn__icon">
-                <!-- X default icon -->
-                <!-- <svg class="turn__icon--X hidden" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
-                    <path fill="currentColor"
-                        d="M15.002 1.147 32 18.145 48.998 1.147a3 3 0 0 1 4.243 0l9.612 9.612a3 3 0 0 1 0 4.243L45.855 32l16.998 16.998a3 3 0 0 1 0 4.243l-9.612 9.612a3 3 0 0 1-4.243 0L32 45.855 15.002 62.853a3 3 0 0 1-4.243 0L1.147 53.24a3 3 0 0 1 0-4.243L18.145 32 1.147 15.002a3 3 0 0 1 0-4.243l9.612-9.612a3 3 0 0 1 4.243 0Z"
-                        fill-rule="evenodd" />
-                </svg> -->
-
-                <!-- O default icon -->
-                <!-- <svg class="turn__icon--O hidden" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
-                    <path fill="currentColor"
-                        d="M32 0c17.673 0 32 14.327 32 32 0 17.673-14.327 32-32 32C14.327 64 0 49.673 0 32 0 14.327 14.327 0 32 0Zm0 18.963c-7.2 0-13.037 5.837-13.037 13.037 0 7.2 5.837 13.037 13.037 13.037 7.2 0 13.037-5.837 13.037-13.037 0-7.2-5.837-13.037-13.037-13.037Z" />
-                </svg> -->
-            </span>
+            <span class="turn__icon"></span>
             <p>Turn</p>
         </div>
 
@@ -78,29 +64,26 @@
                     xml:space="preserve">
                     <g>
                         <path fill="currentColor" d="M53.924,23.618c-0.051-0.123-0.125-0.234-0.217-0.327L41.708,11.293c-0.391-0.391-1.023-0.391-1.414,0
-		s-0.391,1.023,0,1.414L50.587,23H29.001c-0.553,0-1,0.447-1,1s0.447,1,1,1h21.586L40.294,35.293c-0.391,0.391-0.391,1.023,0,1.414
-		C40.489,36.902,40.745,37,41.001,37s0.512-0.098,0.707-0.293l11.999-11.999c0.093-0.092,0.166-0.203,0.217-0.326
-		C54.025,24.138,54.025,23.862,53.924,23.618z" />
+                        s-0.391,1.023,0,1.414L50.587,23H29.001c-0.553,0-1,0.447-1,1s0.447,1,1,1h21.586L40.294,35.293c-0.391,0.391-0.391,1.023,0,1.414
+                        C40.489,36.902,40.745,37,41.001,37s0.512-0.098,0.707-0.293l11.999-11.999c0.093-0.092,0.166-0.203,0.217-0.326
+                        C54.025,24.138,54.025,23.862,53.924,23.618z" />
                         <path fill="currentColor" d="M36.001,29c-0.553,0-1,0.447-1,1v16h-10V8c0-0.436-0.282-0.821-0.697-0.953L8.442,2h26.559v16c0,0.553,0.447,1,1,1
-		s1-0.447,1-1V1c0-0.553-0.447-1-1-1h-34c-0.032,0-0.06,0.015-0.091,0.018C1.854,0.023,1.805,0.036,1.752,0.05
-		C1.658,0.075,1.574,0.109,1.493,0.158C1.467,0.174,1.436,0.174,1.411,0.192C1.38,0.215,1.356,0.244,1.328,0.269
-		c-0.017,0.016-0.035,0.03-0.051,0.047C1.201,0.398,1.139,0.489,1.093,0.589c-0.009,0.02-0.014,0.04-0.022,0.06
-		C1.029,0.761,1.001,0.878,1.001,1v46c0,0.125,0.029,0.243,0.072,0.355c0.014,0.037,0.035,0.068,0.053,0.103
-		c0.037,0.071,0.079,0.136,0.132,0.196c0.029,0.032,0.058,0.061,0.09,0.09c0.058,0.051,0.123,0.093,0.193,0.13
-		c0.037,0.02,0.071,0.041,0.111,0.056c0.017,0.006,0.03,0.018,0.047,0.024l22,7C23.797,54.984,23.899,55,24.001,55
-		c0.21,0,0.417-0.066,0.59-0.192c0.258-0.188,0.41-0.488,0.41-0.808v-6h11c0.553,0,1-0.447,1-1V30
-		C37.001,29.447,36.553,29,36.001,29z" />
+                        s1-0.447,1-1V1c0-0.553-0.447-1-1-1h-34c-0.032,0-0.06,0.015-0.091,0.018C1.854,0.023,1.805,0.036,1.752,0.05
+                        C1.658,0.075,1.574,0.109,1.493,0.158C1.467,0.174,1.436,0.174,1.411,0.192C1.38,0.215,1.356,0.244,1.328,0.269
+                        c-0.017,0.016-0.035,0.03-0.051,0.047C1.201,0.398,1.139,0.489,1.093,0.589c-0.009,0.02-0.014,0.04-0.022,0.06
+                        C1.029,0.761,1.001,0.878,1.001,1v46c0,0.125,0.029,0.243,0.072,0.355c0.014,0.037,0.035,0.068,0.053,0.103
+                        c0.037,0.071,0.079,0.136,0.132,0.196c0.029,0.032,0.058,0.061,0.09,0.09c0.058,0.051,0.123,0.093,0.193,0.13
+                        c0.037,0.02,0.071,0.041,0.111,0.056c0.017,0.006,0.03,0.018,0.047,0.024l22,7C23.797,54.984,23.899,55,24.001,55
+                        c0.21,0,0.417-0.066,0.59-0.192c0.258-0.188,0.41-0.488,0.41-0.808v-6h11c0.553,0,1-0.447,1-1V30
+                        C37.001,29.447,36.553,29,36.001,29z" />
                     </g>
                 </svg>
             </button>
         </div>
     </header>
+
     <main class="main wrapper" id="main">
-
-
-
         <!-- game menu -->
-        <!-- <template id="menu-screen"> -->
         <div class="menu" id="menu">
             <form class="menu__form" id="menu-form">
                 <div class="menu__main">
@@ -109,7 +92,8 @@
                     </h1>
 
                     <div class="menu__mark-options">
-                        <input class="menu__mark-option-radio" id="X" type="radio" name="mark" value="X" />
+                        <input class="menu__mark-option-radio" id="X" type="radio" name="mark" value="X"
+                            aria-label="X mark" />
 
                         <label class="menu__mark-option menu__mark-option--X" for="X">
                             <svg id="icon-x-default" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
@@ -119,7 +103,8 @@
                             </svg>
                         </label>
 
-                        <input class="menu__mark-option-radio" id="O" type="radio" name="mark" value="O" />
+                        <input class="menu__mark-option-radio" id="O" type="radio" name="mark" value="O"
+                            aria-label="O mark" />
 
                         <label class="menu__mark-option menu__mark-option--O" for="O">
                             <svg id="icon-o-default" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
@@ -142,11 +127,23 @@
                             New Game (vs CPU)
                         </button>
 
+                        <!-- cpu difficulty -->
                         <div class="menu__choice-custom-select" id="cpu-difficulty-select">
                             <div class="menu__choice-selected" tabindex="0">
                                 <span id="selected-text">Easy 🐣</span>
-                                <span class="arrow">&#9662;</span> <!-- ▼ icon -->
+
+                                <span class="arrow">
+                                    <svg fill="currentColor" height="20px" width="20px" version="1.1" id="Layer_1"
+                                        xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                        viewBox="0 0 330 330" xml:space="preserve">
+                                        <path fill="currentColor" id="XMLID_225_"
+                                            d="M325.607,79.393c-5.857-5.857-15.355-5.858-21.213,0.001l-139.39,139.393L25.607,79.393
+                                            c-5.857-5.857-15.355-5.858-21.213,0.001c-5.858,5.858-5.858,15.355,0,21.213l150.004,150c2.813,2.813,6.628,4.393,10.606,4.393
+                                            s7.794-1.581,10.606-4.394l149.996-150C331.465,94.749,331.465,85.251,325.607,79.393z" />
+                                    </svg>
+                                </span>
                             </div>
+
                             <div class="menu__choice-options hidden">
                                 <div class="menu__choice-option" data-value="easy">Easy 🐣</div>
                                 <div class="menu__choice-option" data-value="medium">Medium 🧠</div>
@@ -156,7 +153,6 @@
                             <!-- Hidden input to send selected value via form -->
                             <input type="hidden" name="cpu-difficulty" value="easy" />
                         </div>
-
                     </div>
 
                     <!-- Player choice -->
@@ -167,167 +163,34 @@
                 </div>
             </form>
         </div>
-        <!-- </template> -->
 
-        <!-- game board -->
+        <!-- game screen -->
         <template id="game-screen">
+            <!-- board -->
             <div class="board" id="board">
                 <!--1-->
-                <div class="board__tile">
-                    <!-- X outline icon -->
-                    <!-- <svg class="board__tile--X hidden" width="64" height="64" xmlns="http://www.w3.org/2000/svg">
-                        <path
-                            d="M51.12 1.269c.511 0 1.023.195 1.414.586l9.611 9.611c.391.391.586.903.586 1.415s-.195 1.023-.586 1.414L44.441 32l17.704 17.705c.391.39.586.902.586 1.414 0 .512-.195 1.024-.586 1.415l-9.611 9.611c-.391.391-.903.586-1.415.586a1.994 1.994 0 0 1-1.414-.586L32 44.441 14.295 62.145c-.39.391-.902.586-1.414.586a1.994 1.994 0 0 1-1.415-.586l-9.611-9.611a1.994 1.994 0 0 1-.586-1.415c0-.512.195-1.023.586-1.414L19.559 32 1.855 14.295a1.994 1.994 0 0 1-.586-1.414c0-.512.195-1.024.586-1.415l9.611-9.611c.391-.391.903-.586 1.415-.586s1.023.195 1.414.586L32 19.559 49.705 1.855c.39-.391.902-.586 1.414-.586Z"
-                            stroke="#31C3BD" stroke-width="2" fill="none" />
-                    </svg> -->
-
-                    <!-- O outline icon -->
-                    <!-- <svg class="board__tile--O hidden" width="66" height="66" xmlns="http://www.w3.org/2000/svg">
-                        <path
-                            d="M33 1c17.673 0 32 14.327 32 32 0 17.673-14.327 32-32 32C15.327 65 1 50.673 1 33 1 15.327 15.327 1 33 1Zm0 18.963c-7.2 0-13.037 5.837-13.037 13.037 0 7.2 5.837 13.037 13.037 13.037 7.2 0 13.037-5.837 13.037-13.037 0-7.2-5.837-13.037-13.037-13.037Z"
-                            stroke="#F2B137" stroke-width="2" fill="none" />
-                    </svg> -->
-                </div>
-
+                <div class="board__tile"></div>
                 <!--2-->
-                <div class="board__tile">
-                    <!-- X outline icon -->
-                    <!-- <svg class="board__tile--X hidden" width="64" height="64" xmlns="http://www.w3.org/2000/svg">
-                        <path
-                            d="M51.12 1.269c.511 0 1.023.195 1.414.586l9.611 9.611c.391.391.586.903.586 1.415s-.195 1.023-.586 1.414L44.441 32l17.704 17.705c.391.39.586.902.586 1.414 0 .512-.195 1.024-.586 1.415l-9.611 9.611c-.391.391-.903.586-1.415.586a1.994 1.994 0 0 1-1.414-.586L32 44.441 14.295 62.145c-.39.391-.902.586-1.414.586a1.994 1.994 0 0 1-1.415-.586l-9.611-9.611a1.994 1.994 0 0 1-.586-1.415c0-.512.195-1.023.586-1.414L19.559 32 1.855 14.295a1.994 1.994 0 0 1-.586-1.414c0-.512.195-1.024.586-1.415l9.611-9.611c.391-.391.903-.586 1.415-.586s1.023.195 1.414.586L32 19.559 49.705 1.855c.39-.391.902-.586 1.414-.586Z"
-                            stroke="#31C3BD" stroke-width="2" fill="none" />
-                    </svg> -->
-
-                    <!-- O outline icon -->
-                    <!-- <svg class="board__tile--O hidden" width="66" height="66" xmlns="http://www.w3.org/2000/svg">
-                        <path
-                            d="M33 1c17.673 0 32 14.327 32 32 0 17.673-14.327 32-32 32C15.327 65 1 50.673 1 33 1 15.327 15.327 1 33 1Zm0 18.963c-7.2 0-13.037 5.837-13.037 13.037 0 7.2 5.837 13.037 13.037 13.037 7.2 0 13.037-5.837 13.037-13.037 0-7.2-5.837-13.037-13.037-13.037Z"
-                            stroke="#F2B137" stroke-width="2" fill="none" />
-                    </svg> -->
-                </div>
-
+                <div class="board__tile"></div>
                 <!--3-->
-                <div class="board__tile">
-                    <!-- X outline icon -->
-                    <!-- <svg class="board__tile--X hidden" width="64" height="64" xmlns="http://www.w3.org/2000/svg">
-                        <path
-                            d="M51.12 1.269c.511 0 1.023.195 1.414.586l9.611 9.611c.391.391.586.903.586 1.415s-.195 1.023-.586 1.414L44.441 32l17.704 17.705c.391.39.586.902.586 1.414 0 .512-.195 1.024-.586 1.415l-9.611 9.611c-.391.391-.903.586-1.415.586a1.994 1.994 0 0 1-1.414-.586L32 44.441 14.295 62.145c-.39.391-.902.586-1.414.586a1.994 1.994 0 0 1-1.415-.586l-9.611-9.611a1.994 1.994 0 0 1-.586-1.415c0-.512.195-1.023.586-1.414L19.559 32 1.855 14.295a1.994 1.994 0 0 1-.586-1.414c0-.512.195-1.024.586-1.415l9.611-9.611c.391-.391.903-.586 1.415-.586s1.023.195 1.414.586L32 19.559 49.705 1.855c.39-.391.902-.586 1.414-.586Z"
-                            stroke="#31C3BD" stroke-width="2" fill="none" />
-                    </svg> -->
-
-                    <!-- O outline icon -->
-                    <!-- <svg class="board__tile--O hidden" width="66" height="66" xmlns="http://www.w3.org/2000/svg">
-                        <path
-                            d="M33 1c17.673 0 32 14.327 32 32 0 17.673-14.327 32-32 32C15.327 65 1 50.673 1 33 1 15.327 15.327 1 33 1Zm0 18.963c-7.2 0-13.037 5.837-13.037 13.037 0 7.2 5.837 13.037 13.037 13.037 7.2 0 13.037-5.837 13.037-13.037 0-7.2-5.837-13.037-13.037-13.037Z"
-                            stroke="#F2B137" stroke-width="2" fill="none" />
-                    </svg> -->
-                </div>
-
+                <div class="board__tile"></div>
                 <!--4-->
-                <div class="board__tile">
-                    <!-- X outline icon -->
-                    <!-- <svg class="board__tile--X hidden" width="64" height="64" xmlns="http://www.w3.org/2000/svg">
-                        <path
-                            d="M51.12 1.269c.511 0 1.023.195 1.414.586l9.611 9.611c.391.391.586.903.586 1.415s-.195 1.023-.586 1.414L44.441 32l17.704 17.705c.391.39.586.902.586 1.414 0 .512-.195 1.024-.586 1.415l-9.611 9.611c-.391.391-.903.586-1.415.586a1.994 1.994 0 0 1-1.414-.586L32 44.441 14.295 62.145c-.39.391-.902.586-1.414.586a1.994 1.994 0 0 1-1.415-.586l-9.611-9.611a1.994 1.994 0 0 1-.586-1.415c0-.512.195-1.023.586-1.414L19.559 32 1.855 14.295a1.994 1.994 0 0 1-.586-1.414c0-.512.195-1.024.586-1.415l9.611-9.611c.391-.391.903-.586 1.415-.586s1.023.195 1.414.586L32 19.559 49.705 1.855c.39-.391.902-.586 1.414-.586Z"
-                            stroke="#31C3BD" stroke-width="2" fill="none" />
-                    </svg> -->
-
-                    <!-- O outline icon -->
-                    <!-- <svg class="board__tile--O hidden" width="66" height="66" xmlns="http://www.w3.org/2000/svg">
-                        <path
-                            d="M33 1c17.673 0 32 14.327 32 32 0 17.673-14.327 32-32 32C15.327 65 1 50.673 1 33 1 15.327 15.327 1 33 1Zm0 18.963c-7.2 0-13.037 5.837-13.037 13.037 0 7.2 5.837 13.037 13.037 13.037 7.2 0 13.037-5.837 13.037-13.037 0-7.2-5.837-13.037-13.037-13.037Z"
-                            stroke="#F2B137" stroke-width="2" fill="none" />
-                    </svg> -->
-                </div>
-
+                <div class="board__tile"></div>
                 <!--5-->
-                <div class="board__tile">
-                    <!-- X outline icon -->
-                    <!-- <svg class="board__tile--X hidden" width="64" height="64" xmlns="http://www.w3.org/2000/svg">
-                        <path
-                            d="M51.12 1.269c.511 0 1.023.195 1.414.586l9.611 9.611c.391.391.586.903.586 1.415s-.195 1.023-.586 1.414L44.441 32l17.704 17.705c.391.39.586.902.586 1.414 0 .512-.195 1.024-.586 1.415l-9.611 9.611c-.391.391-.903.586-1.415.586a1.994 1.994 0 0 1-1.414-.586L32 44.441 14.295 62.145c-.39.391-.902.586-1.414.586a1.994 1.994 0 0 1-1.415-.586l-9.611-9.611a1.994 1.994 0 0 1-.586-1.415c0-.512.195-1.023.586-1.414L19.559 32 1.855 14.295a1.994 1.994 0 0 1-.586-1.414c0-.512.195-1.024.586-1.415l9.611-9.611c.391-.391.903-.586 1.415-.586s1.023.195 1.414.586L32 19.559 49.705 1.855c.39-.391.902-.586 1.414-.586Z"
-                            stroke="#31C3BD" stroke-width="2" fill="none" />
-                    </svg> -->
-
-                    <!-- O outline icon -->
-                    <!-- <svg class="board__tile--O hidden" width="66" height="66" xmlns="http://www.w3.org/2000/svg">
-                        <path
-                            d="M33 1c17.673 0 32 14.327 32 32 0 17.673-14.327 32-32 32C15.327 65 1 50.673 1 33 1 15.327 15.327 1 33 1Zm0 18.963c-7.2 0-13.037 5.837-13.037 13.037 0 7.2 5.837 13.037 13.037 13.037 7.2 0 13.037-5.837 13.037-13.037 0-7.2-5.837-13.037-13.037-13.037Z"
-                            stroke="#F2B137" stroke-width="2" fill="none" />
-                    </svg> -->
-                </div>
-
+                <div class="board__tile"></div>
                 <!--6-->
-                <div class="board__tile">
-                    <!-- X outline icon -->
-                    <!-- <svg class="board__tile--X hidden" width="64" height="64" xmlns="http://www.w3.org/2000/svg">
-                        <path
-                            d="M51.12 1.269c.511 0 1.023.195 1.414.586l9.611 9.611c.391.391.586.903.586 1.415s-.195 1.023-.586 1.414L44.441 32l17.704 17.705c.391.39.586.902.586 1.414 0 .512-.195 1.024-.586 1.415l-9.611 9.611c-.391.391-.903.586-1.415.586a1.994 1.994 0 0 1-1.414-.586L32 44.441 14.295 62.145c-.39.391-.902.586-1.414.586a1.994 1.994 0 0 1-1.415-.586l-9.611-9.611a1.994 1.994 0 0 1-.586-1.415c0-.512.195-1.023.586-1.414L19.559 32 1.855 14.295a1.994 1.994 0 0 1-.586-1.414c0-.512.195-1.024.586-1.415l9.611-9.611c.391-.391.903-.586 1.415-.586s1.023.195 1.414.586L32 19.559 49.705 1.855c.39-.391.902-.586 1.414-.586Z"
-                            stroke="#31C3BD" stroke-width="2" fill="none" />
-                    </svg> -->
-
-                    <!-- O outline icon -->
-                    <!-- <svg class="board__tile--O hidden" width="66" height="66" xmlns="http://www.w3.org/2000/svg">
-                        <path
-                            d="M33 1c17.673 0 32 14.327 32 32 0 17.673-14.327 32-32 32C15.327 65 1 50.673 1 33 1 15.327 15.327 1 33 1Zm0 18.963c-7.2 0-13.037 5.837-13.037 13.037 0 7.2 5.837 13.037 13.037 13.037 7.2 0 13.037-5.837 13.037-13.037 0-7.2-5.837-13.037-13.037-13.037Z"
-                            stroke="#F2B137" stroke-width="2" fill="none" />
-                    </svg> -->
-                </div>
-
+                <div class="board__tile"></div>
                 <!--7-->
-                <div class="board__tile">
-                    <!-- X outline icon -->
-                    <!-- <svg class="board__tile--X hidden" width="64" height="64" xmlns="http://www.w3.org/2000/svg">
-                        <path
-                            d="M51.12 1.269c.511 0 1.023.195 1.414.586l9.611 9.611c.391.391.586.903.586 1.415s-.195 1.023-.586 1.414L44.441 32l17.704 17.705c.391.39.586.902.586 1.414 0 .512-.195 1.024-.586 1.415l-9.611 9.611c-.391.391-.903.586-1.415.586a1.994 1.994 0 0 1-1.414-.586L32 44.441 14.295 62.145c-.39.391-.902.586-1.414.586a1.994 1.994 0 0 1-1.415-.586l-9.611-9.611a1.994 1.994 0 0 1-.586-1.415c0-.512.195-1.023.586-1.414L19.559 32 1.855 14.295a1.994 1.994 0 0 1-.586-1.414c0-.512.195-1.024.586-1.415l9.611-9.611c.391-.391.903-.586 1.415-.586s1.023.195 1.414.586L32 19.559 49.705 1.855c.39-.391.902-.586 1.414-.586Z"
-                            stroke="#31C3BD" stroke-width="2" fill="none" />
-                    </svg> -->
-
-                    <!-- O outline icon -->
-                    <!-- <svg class="board__tile--O hidden" width="66" height="66" xmlns="http://www.w3.org/2000/svg">
-                        <path
-                            d="M33 1c17.673 0 32 14.327 32 32 0 17.673-14.327 32-32 32C15.327 65 1 50.673 1 33 1 15.327 15.327 1 33 1Zm0 18.963c-7.2 0-13.037 5.837-13.037 13.037 0 7.2 5.837 13.037 13.037 13.037 7.2 0 13.037-5.837 13.037-13.037 0-7.2-5.837-13.037-13.037-13.037Z"
-                            stroke="#F2B137" stroke-width="2" fill="none" />
-                    </svg> -->
-                </div>
-
+                <div class="board__tile"></div>
                 <!--8-->
-                <div class="board__tile">
-                    <!-- X outline icon -->
-                    <!-- <svg class="board__tile--X hidden" width="64" height="64" xmlns="http://www.w3.org/2000/svg">
-                        <path
-                            d="M51.12 1.269c.511 0 1.023.195 1.414.586l9.611 9.611c.391.391.586.903.586 1.415s-.195 1.023-.586 1.414L44.441 32l17.704 17.705c.391.39.586.902.586 1.414 0 .512-.195 1.024-.586 1.415l-9.611 9.611c-.391.391-.903.586-1.415.586a1.994 1.994 0 0 1-1.414-.586L32 44.441 14.295 62.145c-.39.391-.902.586-1.414.586a1.994 1.994 0 0 1-1.415-.586l-9.611-9.611a1.994 1.994 0 0 1-.586-1.415c0-.512.195-1.023.586-1.414L19.559 32 1.855 14.295a1.994 1.994 0 0 1-.586-1.414c0-.512.195-1.024.586-1.415l9.611-9.611c.391-.391.903-.586 1.415-.586s1.023.195 1.414.586L32 19.559 49.705 1.855c.39-.391.902-.586 1.414-.586Z"
-                            stroke="#31C3BD" stroke-width="2" fill="none" />
-                    </svg> -->
-
-                    <!-- O outline icon -->
-                    <!-- <svg class="board__tile--O hidden" width="66" height="66" xmlns="http://www.w3.org/2000/svg">
-                        <path
-                            d="M33 1c17.673 0 32 14.327 32 32 0 17.673-14.327 32-32 32C15.327 65 1 50.673 1 33 1 15.327 15.327 1 33 1Zm0 18.963c-7.2 0-13.037 5.837-13.037 13.037 0 7.2 5.837 13.037 13.037 13.037 7.2 0 13.037-5.837 13.037-13.037 0-7.2-5.837-13.037-13.037-13.037Z"
-                            stroke="#F2B137" stroke-width="2" fill="none" />
-                    </svg> -->
-                </div>
-
+                <div class="board__tile"></div>
                 <!--9-->
-                <div class="board__tile">
-                    <!-- X outline icon -->
-                    <!-- <svg class="board__tile--X hidden" width="64" height="64" xmlns="http://www.w3.org/2000/svg">
-                        <path
-                            d="M51.12 1.269c.511 0 1.023.195 1.414.586l9.611 9.611c.391.391.586.903.586 1.415s-.195 1.023-.586 1.414L44.441 32l17.704 17.705c.391.39.586.902.586 1.414 0 .512-.195 1.024-.586 1.415l-9.611 9.611c-.391.391-.903.586-1.415.586a1.994 1.994 0 0 1-1.414-.586L32 44.441 14.295 62.145c-.39.391-.902.586-1.414.586a1.994 1.994 0 0 1-1.415-.586l-9.611-9.611a1.994 1.994 0 0 1-.586-1.415c0-.512.195-1.023.586-1.414L19.559 32 1.855 14.295a1.994 1.994 0 0 1-.586-1.414c0-.512.195-1.024.586-1.415l9.611-9.611c.391-.391.903-.586 1.415-.586s1.023.195 1.414.586L32 19.559 49.705 1.855c.39-.391.902-.586 1.414-.586Z"
-                            stroke="#31C3BD" stroke-width="2" fill="none" />
-                    </svg> -->
-
-                    <!-- O outline icon -->
-                    <!-- <svg class="board__tile--O hidden" width="66" height="66" xmlns="http://www.w3.org/2000/svg">
-                        <path
-                            d="M33 1c17.673 0 32 14.327 32 32 0 17.673-14.327 32-32 32C15.327 65 1 50.673 1 33 1 15.327 15.327 1 33 1Zm0 18.963c-7.2 0-13.037 5.837-13.037 13.037 0 7.2 5.837 13.037 13.037 13.037 7.2 0 13.037-5.837 13.037-13.037 0-7.2-5.837-13.037-13.037-13.037Z"
-                            stroke="#F2B137" stroke-width="2" fill="none" />
-                    </svg> -->
-                </div>
+                <div class="board__tile"></div>
             </div>
 
+            <!-- stats -->
             <div class="game-stats" id="game-stats">
-                <div class="game-stat game-stats__player1">
+                <div class="game-stat game-stats--player1">
                     <p>
                         <span class="game-stats__player1-icon" id="player1-icon">
                             X
@@ -336,15 +199,15 @@
                             You
                         </span>)
                     </p>
-                    <p class="game-stats__value" id="player1-score">14</p>
+                    <p class="game-stats__value" id="player1-score">0</p>
                 </div>
 
                 <div class="game-stat game-stats__ties">
                     <p>Ties</p>
-                    <p class="game-stats__value" id="ties">32</p>
+                    <p class="game-stats__value" id="ties">0</p>
                 </div>
 
-                <div class="game-stat game-stats__player2">
+                <div class="game-stat game-stats--player2">
                     <p>
                         <span class="game-stats__player2-icon" id="player2-icon">
                             O
@@ -353,17 +216,16 @@
                             CPU
                         </span>)
                     </p>
-                    <p class="game-stats__value" id="player2-score">11</p>
+                    <p class="game-stats__value" id="player2-score">0</p>
                 </div>
             </div>
         </template>
-
     </main>
 
     <!-- overlay -->
     <div class="overlay" aria-hidden="true" id="overlay">
         <!-- winner overlay -->
-        <div class="overlay__win-container" id="win-container">
+        <div class="overlay__container overlay__win-container" id="win-container">
 
             <p class="overlay__win-message">
                 <span id="overlay-win-message">You</span> won!
@@ -375,27 +237,29 @@
                 <span class="overlay__win-content">takes the round</span>
             </h1>
 
-            <div class="overlay__win-buttons">
-                <button type="button" class="overlay__win-btn overlay__win-btn--quit" id="overlay-quit-btn">
+            <div class="overlay__buttons overlay__win-buttons">
+                <button type="button" class="overlay__btn overlay__win-btn overlay__btn--quit" id="overlay-quit-btn">
                     Quit
                 </button>
 
-                <button type="button" class="overlay__win-btn overlay__win-btn--next-round" id="next-round-btn">
+                <button type="button" class="overlay__btn overlay__win-btn overlay__btn--next-round"
+                    id="next-round-btn">
                     Next Round
                 </button>
             </div>
         </div>
 
         <!-- quit overlay -->
-        <div class="overlay__quit-container hidden" id="quit-confirm-container">
+        <div class="overlay__container overlay__quit-container hidden" id="quit-confirm-container">
             <h1 class="overlay__quit-message">You really wanna quit?</h1>
 
-            <div class="overlay__quit-buttons">
-                <button type="button" class="overlay__quit-btn overlay__quit-btn--confirm" id="confirm-quit-yes">
+            <div class="overlay__buttons overlay__quit-buttons">
+                <button type="button" class="overlay__btn overlay__quit-btn overlay__btn--confirm"
+                    id="confirm-quit-yes">
                     Yes
                 </button>
 
-                <button type="button" class="overlay__quit-btn overlay__quit-btn--cancel" id="confirm-quit-no">
+                <button type="button" class="overlay__btn overlay__quit-btn overlay__btn--cancel" id="confirm-quit-no">
                     No
                 </button>
             </div>

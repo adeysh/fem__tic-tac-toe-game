@@ -17,20 +17,19 @@
         padding: a.rem(32);
     }
 
-
     &__title {
         color: var(--text-menu-title);
         font-size: var(--fs-small);
         font-weight: var(--fw-semi-bold);
         text-transform: uppercase;
-        letter-spacing: 1.4px;
+        letter-spacing: a.rem(1.4);
     }
 
     &__mark-options {
         @include a.flexbox($align: center, $justify: center, $gap: a.rem(16));
         background-color: var(--bg-menu-mark-options);
         border-radius: a.rem(12);
-        padding: a.rem(12) a.rem(12);
+        padding: a.rem(12);
         width: 100%;
 
         & input {
@@ -43,10 +42,8 @@
         }
     }
 
-
-
     &__mark-options input:active+.menu__mark-option {
-        opacity: .9;
+        opacity: 0.9;
 
         svg {
             color: var(--bg-menu-mark-option-active);
@@ -108,7 +105,7 @@
         font-size: var(--fs-xsmall);
         font-weight: var(--fw-regular);
         text-transform: uppercase;
-        letter-spacing: 1.4px;
+        letter-spacing: a.rem(1.4);
     }
 
     &__choices {
@@ -119,7 +116,7 @@
 
     &__choice {
         width: 100%;
-        height: 50px;
+        height: a.rem(50);
         font-size: var(--fs-xsmall);
         font-weight: var(--fw-bold);
         text-transform: uppercase;
@@ -140,7 +137,7 @@
             font-family: inherit;
 
             @include a.bp($from: "tablet") {
-                width: 250px;
+                width: a.rem(500);
             }
         }
 
@@ -150,13 +147,18 @@
             font-size: var(--fs-xsmall);
             font-weight: var(--fw-bold);
             text-transform: uppercase;
-            height: 50px;
-            padding: 0.5rem 1.5rem;
+            height: a.rem(50);
+            padding: a.rem(8) a.rem(24);
             border-radius: a.rem(12);
             cursor: pointer;
             background: var(--bg-menu-choice-cpu-difficulty);
 
+            &:active {
+                border: none;
+            }
+
             @include a.bp($from: "tablet") {
+                font-size: var(--fs-body);
                 @include a.flexbox($align: center, $justify: space-between);
             }
         }
@@ -182,7 +184,7 @@
         }
 
         &-options div {
-            padding: 0.5rem 1.5rem;
+            padding: a.rem(8) a.rem(24);
             cursor: pointer;
         }
 
@@ -195,7 +197,6 @@
             display: none;
         }
 
-
         &--cpu {
             @include a.bottom-border($width: 8px, $color: #{var(--border-bottom-menu-choice-cpu-btn)});
             background-color: var(--bg-menu-choice-cpu-btn);
@@ -206,12 +207,12 @@
             background-color: var(--bg-menu-choice-player-btn);
         }
 
+        &:active {
+            border: none;
+        }
+
         @include a.bp($from: "tablet") {
             font-size: var(--fs-body);
         }
-
     }
-
-    // display: none;
-
 }

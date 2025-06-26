@@ -3,7 +3,8 @@ import { insertSVG } from "./svgUtils";
 export async function updateTurnIcon(currentTurn) {
     const turnIcon = document.querySelector(".turn__icon");
     turnIcon.innerHTML = "";
-    const file = currentTurn === "X" ? "icon-x-default.svg" : "icon-o-default.svg";
+    const file = currentTurn === "X"
+        ? "icon-x-default.svg" : "icon-o-default.svg";
     await insertSVG(turnIcon, file);
 }
 
@@ -35,7 +36,9 @@ export async function showOverlay(winner, mode, userMark) {
     const overlayWinContent = document.querySelector(".overlay__win-content");
 
     overlay.classList.add("overlay--visible");
-    overlayWinPlayer.classList.remove("overlay__win-player--X", "overlay__win-player--O");
+    overlayWinPlayer.classList.remove(
+        "overlay__win-player--X", "overlay__win-player--O"
+    );
     overlayWinIconWrapper.innerHTML = "";
 
     if (!winner) {
@@ -46,12 +49,15 @@ export async function showOverlay(winner, mode, userMark) {
     }
 
     const winnerIconFile = winner === "X" ? "icon-x.svg" : "icon-o.svg";
-    const winnerClass = winner === "X" ? "overlay__win-player--X" : "overlay__win-player--O";
+    const winnerClass = winner === "X"
+        ? "overlay__win-player--X" : "overlay__win-player--O";
     overlayWinPlayer.classList.add(winnerClass);
     overlayWinIconWrapper.classList.remove("hidden");
     overlayWinContent.textContent = "takes the round";
 
-    overlayWinMessage.textContent = mode === "CPU" ? (winner === userMark ? "You" : "CPU") : (winner === userMark ? "Player 1" : "Player 2");
+    overlayWinMessage.textContent = mode === "CPU"
+        ? (winner === userMark ? "You" : "CPU")
+        : (winner === userMark ? "Player 1" : "Player 2");
 
     await insertSVG(overlayWinIconWrapper, winnerIconFile, ["overlay__icon"]);
 }

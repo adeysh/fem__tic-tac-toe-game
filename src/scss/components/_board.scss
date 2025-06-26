@@ -2,21 +2,34 @@
 
 .board {
     width: 100%;
-    // height: 500px;
     background-color: var(--bg-game-board);
     display: grid;
-    grid-template-columns: repeat(3, 100px);
-    grid-template-rows: repeat(3, 100px);
+    grid: repeat(3, 100px) / repeat(3, 100px);
     gap: a.rem(16);
 
     &__tile {
-        position: relative;
         @include a.flexbox($align: center, $justify: center);
         @include a.bottom-border($width: 8px, $color: var(--border-bottom-menu-main));
-        width: 100px;
-        height: 100px;
+        position: relative;
+        width: a.rem(100);
+        height: a.rem(100);
         background-color: var(--bg-game-board-tile);
         border-radius: a.rem(12);
+        transition: border 0.2s ease-in-out;
+
+        .svg-icon {
+            width: a.rem(64);
+        }
+
+        &:hover {
+            &.hover-border-X {
+                border: 2px solid var(--border-game-board-tile-X);
+            }
+
+            &.hover-border-O {
+                border: 2px solid var(--border-game-board-tile-O);
+            }
+        }
 
         &--win-X {
             background-color: var(--bg-game-board-tile-win-X);
@@ -26,13 +39,9 @@
             background-color: var(--bg-game-board-tile-win-O);
         }
 
-        .svg-icon {
-            width: a.rem(64);
-        }
-
         @include a.bp($from: "tablet") {
             width: 100%;
-            height: 150px;
+            height: a.rem(150);
         }
     }
 
@@ -46,14 +55,4 @@
 
 .filled {
     pointer-events: none;
-}
-
-.board__tile.hover-border-X:hover {
-    border: 2px solid #31C3BD;
-    /* X color */
-}
-
-.board__tile.hover-border-O:hover {
-    border: 2px solid #F2B137;
-    /* O color */
 }

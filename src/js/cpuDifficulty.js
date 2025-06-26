@@ -9,12 +9,10 @@ export function initCpuDifficultyDropdown() {
     const options = customSelect.querySelector(".menu__choice-options");
     const hiddenInput = customSelect.querySelector("input[type='hidden']");
 
-    // Toggle dropdown on click
     selected.addEventListener("click", () => {
         options.classList.toggle("hidden");
     });
 
-    // Keyboard support
     selected.addEventListener("keydown", (e) => {
         if (e.key === "Enter" || e.key === " ") {
             options.classList.toggle("hidden");
@@ -22,7 +20,6 @@ export function initCpuDifficultyDropdown() {
         }
     });
 
-    // Handle option selection
     options.querySelectorAll("div").forEach(option => {
         option.addEventListener("click", () => {
             const value = option.getAttribute("data-value");

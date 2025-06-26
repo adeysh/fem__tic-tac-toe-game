@@ -13,7 +13,7 @@
         text-transform: uppercase;
     }
 
-    &__player1 {
+    &--player1 {
         background-color: var(--bg-game-stats-player1);
     }
 
@@ -21,16 +21,12 @@
         background-color: var(--bg-game-stats-ties);
     }
 
-    &__player2 {
+    &--player2 {
         background-color: var(--bg-game-stats-player2);
     }
 
     &__value {
         font-size: var(--fs-medium);
         font-weight: var(--fw-bold);
-    }
-
-    @include a.bp($from: "tablet") {
-        @include a.flexbox($justify: space-between, $gap: a.rem(16));
     }
 }

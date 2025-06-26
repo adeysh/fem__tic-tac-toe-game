@@ -13,14 +13,15 @@ menuForm.addEventListener("submit", async (e) => {
     const clickedButton = document.activeElement;
     let actionValue = "";
 
-    if (clickedButton.tagName === "BUTTON" && clickedButton.name === "menu-choice") {
+    if (
+        clickedButton.tagName === "BUTTON" &&
+        clickedButton.name === "menu-choice"
+    ) {
         actionValue = clickedButton.value;
     }
 
     const formData = Object.fromEntries(new FormData(menuForm));
     formData["menu-choice"] = actionValue;
-
-    console.log(formData);
 
     if (!formData.mark) {
         alert("Please select 'X' or 'O' before starting the game.");

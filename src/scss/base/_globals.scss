@@ -42,7 +42,6 @@ button {
 }
 
 .preload-transitions * {
-    // Dry this up a bit with SCSS variable
     $null-transition: none !important;
 
     -webkit-transition: $null-transition;
@@ -51,23 +50,6 @@ button {
     -o-transition: $null-transition;
     transition: $null-transition;
 }
-
-// [type=radio] {
-//     position: absolute;
-//     opacity: 0;
-//     width: 0;
-//     height: 0;
-// }
-
-// /* IMAGE STYLES */
-// [type=radio]+svg {
-//     cursor: pointer;
-// }
-
-// /* CHECKED STYLES */
-// [type=radio]:checked+svg {
-//     outline: 2px solid #f00;
-// }
 
 .visually-hidden {
     clip: rect(0 0 0 0);

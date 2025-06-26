@@ -2,9 +2,8 @@ import { insertSVG } from "./svgUtils";
 import { checkWinOrTie } from "./gameplay";
 import { updateTurnIcon } from "./ui";
 import { winPatterns } from './config';
-export function initCpuLogic(gameState) {
-    console.log(gameState);
 
+export function initCpuLogic(gameState) {
     if (gameState.mode !== "CPU") return;
 
     if (
@@ -19,7 +18,10 @@ export function initCpuLogic(gameState) {
 export async function tryCpuMove(gameState) {
     const boardElement = document.getElementById("board");
 
-    if (gameState.currentTurn !== gameState.player2Mark || gameState.isGameOver) return;
+    if (
+        gameState.currentTurn !== gameState.player2Mark ||
+        gameState.isGameOver
+    ) return;
 
     const emptyIndices = gameState.board
         .map((val, idx) => val === "" ? idx : null)
@@ -31,8 +33,6 @@ export async function tryCpuMove(gameState) {
 
     let moveIndex;
 
-    console.log(`[CPU MOVE] Difficulty: ${gameState.cpuDifficulty}`);
-    console.log(`Available moves: ${emptyIndices}`);
     switch (gameState.cpuDifficulty) {
         case "easy":
             moveIndex = getRandomMove(emptyIndices);
@@ -59,7 +59,8 @@ export async function tryCpuMove(gameState) {
     if (hoverIcon) hoverIcon.remove();
     tile.innerHTML = "";
 
-    await insertSVG(tile, gameState.player2Mark === "X" ? "icon-x.svg" : "icon-o.svg");
+    await insertSVG(tile, gameState.player2Mark === "X"
+        ? "icon-x.svg" : "icon-o.svg");
     tile.classList.add("filled");
     gameState.board[moveIndex] = gameState.player2Mark;
     await checkWinOrTie(gameState, gameState.player2Mark);
@@ -111,7 +112,6 @@ function getBestMove(gameState, emptyIndices) {
         const tempBoard = [...board];
         tempBoard[i] = cpu;
         if (isWinningMove(tempBoard, cpu)) {
-            console.log(`[CPU] Choosing ${i} to WIN`);
             return i;
         }
     }
@@ -120,7 +120,6 @@ function getBestMove(gameState, emptyIndices) {
         const tempBoard = [...board];
         tempBoard[i] = player;
         if (isWinningMove(tempBoard, player)) {
-            console.log(`[CPU] Blocking player at ${i}`);
             return i;
         }
     }
@@ -135,7 +134,10 @@ function getBestMove(gameState, emptyIndices) {
 
     const corners = [[0, 8], [2, 6]];
     for (let [playerCorner, opposite] of corners) {
-        if (board[playerCorner] === player && board[opposite] === "") return opposite;
+        if (
+            board[playerCorner] === player &&
+            board[opposite] === ""
+        ) return opposite;
     }
 
     const cornerOptions = [0, 2, 6, 8].filter(i => board[i] === "");
@@ -206,7 +208,9 @@ function getMinimaxMove(gameState) {
 function isWinningMove(board, mark) {
     const allPatterns = Object.values(winPatterns).flat();
 
-    return allPatterns.some(pattern => pattern.every(index => board[index] === mark));
+    return allPatterns.some(
+        pattern => pattern.every(index => board[index] === mark)
+    );
 }
 
 function findForkMove(board, mark, emptyIndices) {
