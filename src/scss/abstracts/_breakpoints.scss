@@ -3,6 +3,7 @@
 
 // Define breakpoints
 $breakpoints: (
+    "mobile": em(375),
     "tablet": em(720),
     "desktop": em(1200),
     "desktop-large": em(1920),

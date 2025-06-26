@@ -4,6 +4,11 @@
     @include a.flexbox($direction: column, $align: center, $gap: a.rem(32));
     padding-inline: a.rem(20);
 
+    &__logo {
+        width: 72px;
+        height: 32px;
+    }
+
     &__buttons {
         @include a.flexbox($align: center, $gap: a.rem(16));
     }
@@ -74,9 +79,53 @@
         @include a.flexbox($align: center, $justify: space-between);
         padding-inline: 0;
 
+        @include a.bp($from: "mobile", $to: "tablet") {
+
+            .header__logo {
+                width: a.rem(36);
+                height: a.rem(16);
+            }
+
+            .turn {
+                padding: 0.3125rem 1rem;
+
+                &__icon svg {
+                    width: a.rem(16);
+                }
+
+                p {
+                    font-size: var(--fs-xsmall);
+                }
+            }
+
+            .header__buttons {
+                button {
+                    width: a.rem(35);
+                    height: a.rem(35);
+                }
+            }
+        }
+
         @include a.bp($from: "tablet") {
             @include a.flexbox($align: center, $justify: space-between);
             padding-inline: a.rem(100);
+
+            // .header__logo {
+            //     width: a.rem(72);
+            //     height: a.rem(32);
+            // }
+
+            // .turn {
+            //     padding: 0.3125rem 1.5rem;
+
+            //     &__icon svg {
+            //         width: a.rem(20);
+            //     }
+
+            //     p {
+            //         font-size: var(--fs-xsmall);
+            //     }
+            // }
         }
     }
 
