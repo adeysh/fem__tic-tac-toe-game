@@ -1,7 +1,5 @@
 import { updateTurnIcon, updateScores, showOverlay } from './ui';
-import { insertSVG } from './svgUtils';
 import { initCpuLogic } from './cpu';
-import { initHoverEffects } from './hover';
 import { saveGameState } from './gameState';
 import { clearGameState } from './main';
 

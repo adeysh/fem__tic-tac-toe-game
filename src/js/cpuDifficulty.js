@@ -1,5 +1,3 @@
-// src/js/cpuDifficultyDropdown.js
-
 export function initCpuDifficultyDropdown() {
     const customSelect = document.getElementById("cpu-difficulty-select");
     if (!customSelect) return;
