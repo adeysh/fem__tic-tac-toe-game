@@ -92,7 +92,7 @@
                         Pick Player 1's Mark
                     </h1>
 
-                    <div class="menu__mark-options">
+                    <div class="menu__mark-options" role="radiogroup" aria-label="Player 1's mark">
                         <input class="menu__mark-option-radio" id="X" type="radio" name="mark" value="X"
                             aria-label="X mark" />
 
@@ -145,11 +145,15 @@
                                 </span>
                             </div>
 
-                            <div class="menu__choice-options hidden">
-                                <div tabindex="0" class="menu__choice-option" data-value="easy">Easy 🐣</div>
-                                <div tabindex="0" class="menu__choice-option" data-value="medium">Medium 🧠</div>
-                                <div tabindex="0" class="menu__choice-option" data-value="hard">Hard 💀</div>
-                                <div tabindex="0" class="menu__choice-option" data-value="minimax">Unbeatable 👽</div>
+                            <div class="menu__choice-options hidden" role="listbox" aria-label="CPU Difficulty">
+                                <div tabindex="0" class="menu__choice-option" role="option" data-value="easy">Easy 🐣
+                                </div>
+                                <div tabindex="0" class="menu__choice-option" role="option" data-value="medium">Medium
+                                    🧠</div>
+                                <div tabindex="0" class="menu__choice-option" role="option" data-value="hard">Hard 💀
+                                </div>
+                                <div tabindex="0" class="menu__choice-option" role="option" data-value="minimax">
+                                    Unbeatable 👽</div>
                             </div>
                             <!-- Hidden input to send selected value via form -->
                             <input type="hidden" name="cpu-difficulty" value="easy" />
@@ -226,7 +230,7 @@
     <!-- overlay -->
     <div class="overlay" aria-hidden="true" id="overlay">
         <!-- winner overlay -->
-        <div class="overlay__container overlay__win-container" id="win-container">
+        <div class="overlay__container overlay__win-container" role="dialog" aria-modal="true" id="win-container">
 
             <p class="overlay__win-message">
                 <span id="overlay-win-message">You</span> won!
