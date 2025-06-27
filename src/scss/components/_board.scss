@@ -31,6 +31,11 @@
             }
         }
 
+        &:focus-visible {
+            border: 2px solid var(--grey-500);
+            outline: none;
+        }
+
         &--win-X {
             background-color: var(--bg-game-board-tile-win-X);
         }

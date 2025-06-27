@@ -5,6 +5,7 @@ import { initLifecycle } from "./lifecycle";
 import { initHoverEffects } from "./hover";
 import { initCpuLogic } from "./cpu";
 import { initCpuDifficultyDropdown } from './cpuDifficulty';
+import { initKeyboardNavigation } from './keyboardNavigation';
 
 const menuForm = document.getElementById("menu-form");
 
@@ -36,7 +37,10 @@ menuForm.addEventListener("submit", async (e) => {
     initLifecycle(gameState);
 });
 
-document.addEventListener("DOMContentLoaded", initCpuDifficultyDropdown);
+document.addEventListener("DOMContentLoaded", () => {
+    initCpuDifficultyDropdown();
+    initKeyboardNavigation();
+});
 
 function loadGameState() {
     const saved = localStorage.getItem("ticTacToeGameState");

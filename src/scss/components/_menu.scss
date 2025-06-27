@@ -97,7 +97,6 @@
         &:hover {
             background-color: var(--bg-menu-mark-option-hover);
         }
-
     }
 
     & .info {
@@ -161,6 +160,11 @@
                 font-size: var(--fs-body);
                 @include a.flexbox($align: center, $justify: space-between);
             }
+
+            &:focus-visible {
+                outline: 2px solid var(--grey-500);
+                outline-offset: 4px;
+            }
         }
 
         .arrow {
@@ -186,12 +190,20 @@
         &-options div {
             padding: a.rem(8) a.rem(24);
             cursor: pointer;
+
+            &:hover {
+                background: var(--bg-menu-choice-cpu-difficulty-options-hover);
+                border-radius: a.rem(12);
+            }
+
+            &:focus-visible {
+                background: var(--bg-menu-choice-cpu-difficulty-options-hover);
+                outline: 2px solid var(--grey-500);
+                outline-offset: 2px;
+                border-radius: 4px;
+            }
         }
 
-        &-options div:hover {
-            background: var(--bg-menu-choice-cpu-difficulty-options-hover);
-            border-radius: a.rem(12);
-        }
 
         .hidden {
             display: none;

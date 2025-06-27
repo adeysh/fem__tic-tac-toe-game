@@ -5,7 +5,6 @@ import { tryCpuMove } from './cpu';
 import { saveGameState } from './gameState';
 
 export function setupBoard(gameState) {
-    console.log("setupBoard attached");
     const board = document.getElementById("board");
     if (!board) return;
 
