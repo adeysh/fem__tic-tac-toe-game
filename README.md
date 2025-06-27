@@ -67,6 +67,7 @@ Users should be able to:
 - Adding an indicator that shows how many rounds have been played.
 - Adding a settings menu that has typical game settings (theme, winning-turns, difficulty)
 - Adding personalized messages based on the results of the game.
+- Adding full keyboard navigation
 
 ### Useful resources
 
